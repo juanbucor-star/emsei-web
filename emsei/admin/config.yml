@@ -1,0 +1,95 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "informacion"
+    label: "Contenido del Sitio"
+    file: "site_data/informacion.json"
+    fields:
+      - { label: "Título del Hero", name: "hero_title", widget: "string" }
+      - { label: "Subtítulo del Hero", name: "hero_subtitle", widget: "text" }
+      - { label: "Texto — Quiénes somos", name: "nosotros_texto", widget: "markdown" }
+      - label: "Imagen del Hero"
+        name: "hero_image"
+        widget: "image"
+        required: false
+      - label: "Imagen QR de Contacto"
+        name: "qr_contacto"
+        widget: "image"
+
+      - label: "Servicios"
+        name: "servicios"
+        widget: "list"
+        summary: "{{fields.titulo}}"
+        fields:
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Descripción", name: "descripcion", widget: "text" }
+          - label: "Imagen"
+            name: "imagen"
+            widget: "image"
+            required: false
+          - { label: "Categoría", name: "categoria", widget: "string", required: false }
+          - { label: "Orden", name: "orden", widget: "number", default: 0 }
+          - { label: "Activo", name: "activo", widget: "boolean", default: true }
+
+      - label: "Clientes"
+        name: "clientes"
+        widget: "list"
+        summary: "{{fields.nombre}} — {{fields.ubicacion}}"
+        fields:
+          - { label: "Nombre", name: "nombre", widget: "string" }
+          - { label: "Ubicación", name: "ubicacion", widget: "string" }
+          - label: "Logo"
+            name: "logo"
+            widget: "image"
+            required: false
+
+      - label: "Equipo"
+        name: "equipo"
+        widget: "list"
+        summary: "{{fields.nombre}} — {{fields.cargo}}"
+        fields:
+          - { label: "Nombre", name: "nombre", widget: "string" }
+          - { label: "Cargo", name: "cargo", widget: "string" }
+          - { label: "Descripción", name: "descripcion", widget: "markdown" }
+          - label: "Foto"
+            name: "foto"
+            widget: "image"
+            required: false
+          - { label: "Orden", name: "orden", widget: "number", default: 0 }
+
+      - label: "Proyectos / Obras"
+        name: "proyectos"
+        widget: "list"
+        summary: "{{fields.titulo}} — {{fields.lugar}}"
+        fields:
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Lugar", name: "lugar", widget: "string" }
+          - { label: "Descripción", name: "descripcion", widget: "markdown" }
+          - label: "Galería de imágenes"
+            name: "galeria"
+            widget: "list"
+            field: { label: "Imagen", name: "imagen", widget: "image" }
+          - { label: "Fecha", name: "fecha", widget: "datetime", required: false }
+          - { label: "Activo", name: "activo", widget: "boolean", default: true }
+
+      - label: "Galería General"
+        name: "galeria"
+        widget: "list"
+        field:
+          label: "Imagen"
+          name: "imagen"
+          widget: "image"
+
+      - label: "Documentos"
+        name: "documentos"
+        widget: "list"
+        fields:
+          - { label: "Título", name: "titulo", widget: "string" }
+          - label: "Archivo"
+            name: "archivo"
+            widget: "file"
