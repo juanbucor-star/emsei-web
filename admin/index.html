@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin — Grupo EMSEI</title>
 
-  <!-- Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.css" />
 </head>
@@ -14,65 +12,10 @@
   <div id="nc-root"></div>
   
   <script>
-    // Inicialización estándar de Netlify CMS
-    if (typeof CMS !== 'undefined') {
-      CMS.init({
-        config: {
-          backend: {
-            name: "git-gateway",
-            branch: "main" // Define tu rama principal de GitHub
-          },
-          media_folder: "images/uploads",  // Define la carpeta para almacenar los archivos de medios
-          public_folder: "/images/uploads", // URL pública de los medios
-          collections: [
-            {
-              name: "contenido",
-              label: "Contenido del sitio",
-              files: [
-                {
-                  name: "principal",
-                  label: "Contenido principal",
-                  file: "site_data/informacion.json",
-                  format: "json",
-                  fields: [
-                    { label: "Título principal", name: "hero.title", widget: "string" },
-                    { label: "Subtítulo", name: "hero.subtitle", widget: "string" },
-                    { label: "Texto del hero", name: "hero.text", widget: "text" },
-                    { label: "Servicios", name: "segments", widget: "list", fields: [
-                        { label: "Título", name: "title", widget: "string" },
-                        { label: "Descripción", name: "description", widget: "text" }
-                    ] },
-                    { label: "Clientes", name: "clients", widget: "list", fields: [
-                        { label: "Nombre del cliente", name: "name", widget: "string" },
-                        { label: "Ubicación", name: "location", widget: "string" }
-                    ] },
-                    { label: "Tarjetas y contacto QR", name: "cards", widget: "object", fields: [
-                        { label: "Título", name: "title", widget: "string" },
-                        { label: "Introducción", name: "intro", widget: "text" },
-                        { label: "Items", name: "items", widget: "list", fields: [
-                            { label: "Título", name: "title", widget: "string" },
-                            { label: "Texto", name: "text", widget: "text" }
-                        ] }
-                    ] },
-                    { label: "Misión, visión y valores", name: "about", widget: "object", fields: [
-                        { label: "Misión", name: "mission", widget: "text" },
-                        { label: "Visión", name: "vision", widget: "text" },
-                        { label: "Valores", name: "values", widget: "text" }
-                    ] },
-                    { label: "Contacto", name: "contact", widget: "object", fields: [
-                        { label: "Teléfono principal", name: "phone_main", widget: "string" },
-                        { label: "Teléfono alternativo", name: "phone_secondary", widget: "string" },
-                        { label: "Email", name: "email", widget: "string" },
-                        { label: "Dirección", name: "address", widget: "string" }
-                    ] }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      });
-    }
+    // Se ha eliminado el bloque CMS.init() con la configuración en línea.
+    // Una vez que el archivo config.yml se mueva a /admin/config.yml, 
+    // Netlify CMS lo encontrará y se inicializará automáticamente, 
+    // solucionando el problema de la pantalla en blanco.
   </script>
 </body>
 </html>
