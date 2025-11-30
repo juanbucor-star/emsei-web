@@ -28,50 +28,50 @@ collections:
             widget: "object"
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - { label: "Subtítulo", name: "subtitle", widget: "text" }
-              - { label: "Texto principal", name: "text", widget: "text" }
-              - { label: "Imagen de hero", name: "image", widget: "image", required: false }
-              - { label: "Alt de imagen de hero", name: "image_alt", widget: "string", required: false }
+              - { label: "Subtítulo", name: "subtitle", widget: "string" }
+              - { label: "Texto", name: "text", widget: "text" }
+              - { label: "Imagen", name: "image", widget: "image", required: false }
+              - { label: "Alt", name: "image_alt", widget: "string", required: false }
 
-          - label: "Segmentos / Servicios"
+          - label: "Segmentos"
             name: "segments"
             widget: "list"
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - { label: "Bajada", name: "tagline", widget: "string", required: false }
-              - { label: "Descripción", name: "description", widget: "text", required: false }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Descripción", name: "description", widget: "text" }
 
           - label: "Trabajos reales"
             name: "projects"
             widget: "list"
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - { label: "Ubicación", name: "location", widget: "string", required: false }
-              - { label: "Descripción", name: "description", widget: "text", required: false }
+              - { label: "Ubicación", name: "location", widget: "string" }
+              - { label: "Descripción", name: "description", widget: "text" }
               - { label: "Imagen", name: "image", widget: "image", required: false }
-              - { label: "Alt de la imagen", name: "image_alt", widget: "string", required: false }
+              - { label: "Alt imagen", name: "image_alt", widget: "string", required: false }
 
           - label: "Clientes"
             name: "clients"
             widget: "list"
             fields:
               - { label: "Nombre", name: "name", widget: "string" }
-              - { label: "Ubicación", name: "location", widget: "string", required: false }
+              - { label: "Ubicación", name: "location", widget: "string" }
 
-          - label: "Tarjetas / Contacto QR"
+          - label: "Tarjetas y QR"
             name: "cards"
             widget: "object"
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - { label: "Intro", name: "intro", widget: "text" }
-              - label: "Items"
-                name: "items"
+              - { label: "Introducción", name: "intro", widget: "text" }
+              - name: "items"
+                label: "Ítems"
                 widget: "list"
                 fields:
                   - { label: "Título", name: "title", widget: "string" }
                   - { label: "Texto", name: "text", widget: "text" }
 
-          - label: "¿Quiénes somos?"
+          - label: "Quiénes somos"
             name: "about"
             widget: "object"
             fields:
@@ -84,6 +84,6 @@ collections:
             widget: "object"
             fields:
               - { label: "Teléfono principal", name: "phone_main", widget: "string" }
-              - { label: "Teléfono alternativo", name: "phone_secondary", widget: "string", required: false }
-              - { label: "Mail", name: "email", widget: "string" }
-              - { label: "Dirección", name: "address", widget: "string", required: false }
+              - { label: "Teléfono secundario", name: "phone_secondary", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Dirección", name: "address", widget: "string" }
