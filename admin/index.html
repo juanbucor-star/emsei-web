@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <title>Admin — Decap CMS</title>
-
+  <!-- Netlify Identity for auth -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Decap (Netlify) CMS -->
   <script src="https://unpkg.com/decap-cms@2.10.192/dist/decap-cms.js"></script>
 </head>
-
 <body>
   <script>
     if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
+      window.netlifyIdentity.on("init", (user) => {
         if (!user) {
           window.netlifyIdentity.on("login", () => {
-            window.location.reload();
+            document.location.reload();
           });
         }
       });
