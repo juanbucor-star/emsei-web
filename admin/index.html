@@ -3,14 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin — EMSEI</title>
-  <script src="https://unpkg.com/static-cms-app@latest/dist/static-cms-app.js"></script>
+  <title>Admin — Grupo EMSEI</title>
+  <!-- Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
 </head>
 <body>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      StaticCms.init();
-    });
+    // Inicialización estándar de Netlify CMS
+    if (typeof CMS !== 'undefined') {
+      CMS.init();
+    }
   </script>
 </body>
 </html>
