@@ -1,12 +1,16 @@
 backend:
   name: git-gateway
   branch: main
+  identity_url: "https://grupo-emsei.netlify.app/.netlify/identity"
+  gateway_url: "https://grupo-emsei.netlify.app/.netlify/git"
+
+local_backend: false
+
+site_url: "https://grupo-emsei.netlify.app"
+logo_url: "/images/uploads/logo.png"
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
-
-site_url: "https://resonant-griffin-1ec533.netlify.app"
-display_url: "https://resonant-griffin-1ec533.netlify.app"
 
 collections:
   - name: "contenido"
@@ -31,59 +35,23 @@ collections:
             widget: "object"
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - { label: "Subtítulo", name: "subtitle", widget: "string" }
-              - { label: "Texto", name: "text", widget: "text" }
-              - { label: "Imagen", name: "image", widget: "image", required: false }
-              - { label: "Alt", name: "image_alt", widget: "string", required: false }
-
-          - label: "Segmentos"
-            name: "segments"
-            widget: "list"
-            fields:
-              - { label: "Título", name: "title", widget: "string" }
-              - { label: "Tagline", name: "tagline", widget: "string" }
               - { label: "Descripción", name: "description", widget: "text" }
+              - { label: "Botón (texto)", name: "button_text", widget: "string" }
+              - { label: "Botón (enlace)", name: "button_link", widget: "string" }
+              - { label: "Imagen principal", name: "hero_image", widget: "image", required: false }
 
-          - label: "Trabajos reales"
-            name: "projects"
+          - label: "Sección Servicios"
+            name: "services"
             widget: "list"
             fields:
               - { label: "Título", name: "title", widget: "string" }
-              - { label: "Ubicación", name: "location", widget: "string" }
               - { label: "Descripción", name: "description", widget: "text" }
-              - { label: "Imagen", name: "image", widget: "image", required: false }
-              - { label: "Alt imagen", name: "image_alt", widget: "string", required: false }
-
-          - label: "Clientes"
-            name: "clients"
-            widget: "list"
-            fields:
-              - { label: "Nombre", name: "name", widget: "string" }
-              - { label: "Ubicación", name: "location", widget: "string" }
-
-          - label: "Tarjetas y QR"
-            name: "cards"
-            widget: "object"
-            fields:
-              - { label: "Título", name: "title", widget: "string" }
-              - { label: "Introducción", name: "intro", widget: "text" }
-              - name: "items"
-                label: "Ítems"
-                widget: "list"
-                fields:
-                  - { label: "Título", name: "title", widget: "string" }
-                  - { label: "Texto", name: "text", widget: "text" }
-
-          - label: "Quiénes somos"
-            name: "about"
-            widget: "object"
-            fields:
-              - { label: "Misión", name: "mission", widget: "text" }
-              - { label: "Visión", name: "vision", widget: "text" }
-              - { label: "Valores", name: "values", widget: "text" }
+              - { label: "Ícono", name: "icon", widget: "string" }
 
           - label: "Contacto"
             name: "contact"
             widget: "object"
             fields:
-              - { label: "Teléfono principal", name: "phone_main", widge_
+              - { label: "WhatsApp", name: "whatsapp", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Teléfono", name: "phone", widget: "string", required: false }
