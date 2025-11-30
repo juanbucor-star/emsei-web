@@ -5,19 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin — Grupo EMSEI</title>
 
-  <!-- Netlify Identity (OBLIGATORIO para login) -->
+  <!-- Netlify Identity -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- Netlify CMS -->
-<script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
+  <!-- Desactivar preview (evita errores bootstrap.js appendChild null) -->
+  <script>
+    window.CMS_DISABLE_PREVIEW_STYLES = true;
+    window.CMS_MANUAL_INIT = true;
+  </script>
+
+  <!-- CMS local (evita bloqueos CSP) -->
+  <script src="/admin/vendor/netlify-cms.js"></script>
 </head>
+
 <body>
-  <!-- ESTE DIV ES CRÍTICO -->
   <div id="nc-root"></div>
 
   <script>
     if (typeof CMS !== 'undefined') {
-      CMS.init();
+      CMS.init({
+        config: { load_config_file: true }
+      });
+
+      // Desactivar preview completamente
+      CMS.registerPreviewTemplate("contenido", () => null);
+      CMS.registerPreviewStyle("", { raw: true });
+    } else {
+      console.error("CMS no se cargó correctamente.");
     }
   </script>
 </body>
