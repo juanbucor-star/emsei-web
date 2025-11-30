@@ -64,8 +64,8 @@ collections:
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Intro", name: "intro", widget: "text" }
-              - label: "Items"
-                name: "items"
+              - name: "items"
+                label: "Items"
                 widget: "list"
                 fields:
                   - { label: "Título", name: "title", widget: "string" }
