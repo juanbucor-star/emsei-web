@@ -5,32 +5,7 @@ fetch('./site_data/informacion.json')
     return r.json();
   })
   .then((data) => {
-    // =========================
-    // BRANDING / LOGO
-    // =========================
-    if (data.branding) {
-      const logoText = document.getElementById('logo-text');
-      const logoSubtitle = document.getElementById('logo-subtitle');
-      const logoImg = document.getElementById('logo-image');
-      const logoInitials = document.getElementById('logo-initials');
-
-      if (logoText && data.branding.logo_text) {
-        logoText.textContent = data.branding.logo_text;
-      }
-      if (logoSubtitle && data.branding.logo_subtitle) {
-        logoSubtitle.textContent = data.branding.logo_subtitle;
-      }
-      if (logoImg && data.branding.logo_image) {
-        logoImg.src = data.branding.logo_image;
-        logoImg.alt = data.branding.logo_alt || 'Logo Grupo EMSEI';
-        logoImg.classList.remove('hidden');
-        if (logoInitials) logoInitials.classList.add('hidden');
-      }
-    }
-
-    // =========================
     // HERO
-    // =========================
     if (data.hero) {
       const heroTitle = document.getElementById('hero-title');
       if (heroTitle && data.hero.title) heroTitle.textContent = data.hero.title;
@@ -40,20 +15,9 @@ fetch('./site_data/informacion.json')
 
       const heroText = document.getElementById('hero-text');
       if (heroText && data.hero.text) heroText.textContent = data.hero.text;
-
-      // Imagen opcional en panel lateral
-      const heroImgContainer = document.getElementById('hero-image-container');
-      const heroImg = document.getElementById('hero-image');
-      if (heroImgContainer && heroImg && data.hero.image) {
-        heroImg.src = data.hero.image;
-        heroImg.alt = data.hero.image_alt || '';
-        heroImgContainer.classList.remove('hidden');
-      }
     }
 
-    // =========================
     // SEGMENTOS / SERVICIOS
-    // =========================
     const segmentsGrid = document.getElementById('segments-grid');
     if (segmentsGrid && Array.isArray(data.segments)) {
       segmentsGrid.innerHTML = '';
@@ -72,43 +36,7 @@ fetch('./site_data/informacion.json')
       });
     }
 
-    // =========================
-    // TRABAJOS REALES
-    // =========================
-    const projectsSection = document.getElementById('trabajos');
-    const projectsGrid = document.getElementById('projects-grid');
-    if (projectsSection && projectsGrid && Array.isArray(data.projects) && data.projects.length > 0) {
-      projectsSection.classList.remove('hidden');
-      projectsGrid.innerHTML = '';
-      data.projects.forEach((proj) => {
-        const card = document.createElement('article');
-        card.className =
-          'bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-shadow';
-        let imgBlock = '';
-        if (proj.image) {
-          imgBlock = `
-            <div class="h-32 sm:h-36 w-full overflow-hidden">
-              <img src="${proj.image}" alt="${proj.image_alt || ''}" class="w-full h-full object-cover" />
-            </div>
-          `;
-        }
-        card.innerHTML = `
-          ${imgBlock}
-          <div class="px-4 py-3 flex-1 flex flex-col gap-2">
-            <div>
-              <h3 class="text-sm font-semibold text-slate-900 mb-0.5">${proj.title || ''}</h3>
-              <p class="text-[11px] text-slate-500">${proj.location || ''}</p>
-            </div>
-            <p class="text-xs text-slate-600 flex-1">${proj.description || ''}</p>
-          </div>
-        `;
-        projectsGrid.appendChild(card);
-      });
-    }
-
-    // =========================
     // CLIENTES
-    // =========================
     const clientsTitle = document.getElementById('clients-title');
     if (clientsTitle && data.clients_title) {
       clientsTitle.textContent = data.clients_title;
@@ -131,9 +59,7 @@ fetch('./site_data/informacion.json')
       });
     }
 
-    // =========================
     // TARJETAS / CONTACTO QR
-    // =========================
     if (data.cards) {
       const cardsTitle = document.getElementById('cards-title');
       if (cardsTitle && data.cards.title) cardsTitle.textContent = data.cards.title;
@@ -152,9 +78,7 @@ fetch('./site_data/informacion.json')
       }
     }
 
-    // =========================
     // QUIÉNES SOMOS
-    // =========================
     if (data.about) {
       const mission = document.getElementById('about-mission');
       if (mission && data.about.mission) mission.textContent = data.about.mission;
@@ -166,9 +90,7 @@ fetch('./site_data/informacion.json')
       if (values && data.about.values) values.textContent = data.about.values;
     }
 
-    // =========================
     // CONTACTO GENERAL
-    // =========================
     const contact = data.contact || {};
     const phoneMain = contact.phone_main || '351 2035158';
     const phoneSecondary = contact.phone_secondary || '351 3482841';

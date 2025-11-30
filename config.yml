@@ -1,0 +1,69 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: contenido
+    label: Contenido del sitio
+    files:
+      - name: principal
+        label: Contenido principal
+        file: site_data/informacion.json
+        format: json
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Subtítulo", name: "subtitle", widget: "string", required: false }
+              - { label: "Texto descriptivo", name: "text", widget: "text", required: false }
+          - label: "Segmentos / Servicios"
+            name: segments
+            widget: list
+            summary: "{{fields.title}} — {{fields.tagline}}"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string", required: false }
+              - { label: "Descripción", name: "description", widget: "text", required: false }
+          - label: "Título sección clientes"
+            name: clients_title
+            widget: string
+          - label: "Clientes"
+            name: clients
+            widget: list
+            summary: "{{fields.name}} — {{fields.location}}"
+            fields:
+              - { label: "Nombre", name: "name", widget: "string" }
+              - { label: "Barrio / zona", name: "location", widget: "string" }
+          - label: "Tarjetas y QR"
+            name: cards
+            widget: object
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Introducción", name: "intro", widget: "text", required: false }
+              - label: "Puntos destacados"
+                name: items
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Título", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "text" }
+          - label: "¿Quiénes somos?"
+            name: about
+            widget: object
+            fields:
+              - { label: "Misión", name: "mission", widget: "text" }
+              - { label: "Visión", name: "vision", widget: "text" }
+              - { label: "Valores", name: "values", widget: "text" }
+          - label: "Contacto"
+            name: contact
+            widget: object
+            fields:
+              - { label: "Teléfono principal", name: "phone_main", widget: "string" }
+              - { label: "Teléfono alternativo", name: "phone_secondary", widget: "string", required: false }
+              - { label: "Mail", name: "email", widget: "string" }
+              - { label: "Dirección", name: "address", widget: "string", required: false }
