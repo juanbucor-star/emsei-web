@@ -1,3 +1,38 @@
 {
-  "hero_title": "Bienvenido a EMSEI"
+  "hero_title": "Nuestros clientes, nuestro respaldo.",
+  "hero_subtitle": "Soluciones eléctricas integrales para countries, barrios cerrados y complejos premium.",
+  "intro_text": "Somos una empresa especializada en impulsar el funcionamiento seguro y confiable de countries, barrios cerrados, complejos premium y comercios, ofreciendo soluciones eléctricas integrales. Acompañamos a nuestros clientes con un servicio cercano, respaldado por la experiencia y la confiabilidad que nos distinguen, generando valor duradero para emprendedores, administradores y comunidades.",
+  "clients_title": "Nuestros clientes, nuestro respaldo.",
+  "clients": [
+    {
+      "name": "MilNueveDiez",
+      "location": "Villa Belgrano"
+    },
+    {
+      "name": "Chateau Village",
+      "location": "Villa Belgrano"
+    },
+    {
+      "name": "Village Plaza",
+      "location": "Villa Belgrano"
+    },
+    {
+      "name": "Las piedras housing",
+      "location": "Valle Escondido"
+    },
+    {
+      "name": "Vistalba",
+      "location": "Villa Belgrano"
+    },
+    {
+      "name": "La Rosella",
+      "location": "Valle Escondido"
+    }
+  ],
+  "contact": {
+    "phone_main": "351 2035158",
+    "phone_secondary": "351 3482841",
+    "email": "contacto@grupoemsei.com",
+    "address": "Av. Sagrada Familia 1171"
+  }
 }

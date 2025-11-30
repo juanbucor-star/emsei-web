@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: juanbucor-star/emsei-web
+  branch: main
+  auth_type: implicit
+  app_id: Ov23liWb9vBzNsvgndOc
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: informacion
+    label: Contenido del Sitio
+    file: site_data/informacion.json
+    fields:
+      - { label: "Título principal", name: "hero_title", widget: "string" }
+      - { label: "Subtítulo", name: "hero_subtitle", widget: "text", required: false }
+      - { label: "Texto introductorio", name: "intro_text", widget: "text", required: false }
+      - { label: "Título sección clientes", name: "clients_title", widget: "string", required: false }
+      - label: "Clientes"
+        name: "clients"
+        widget: "list"
+        summary: "{{fields.name}} — {{fields.location}}"
+        fields:
+          - { label: "Nombre", name: "name", widget: "string" }
+          - { label: "Barrio / zona", name: "location", widget: "string" }
+      - label: "Contacto"
+        name: "contact"
+        widget: "object"
+        fields:
+          - { label: "Teléfono principal", name: "phone_main", widget: "string" }
+          - { label: "Teléfono alternativo", name: "phone_secondary", widget: "string", required: false }
+          - { label: "Mail", name: "email", widget: "string" }
+          - { label: "Dirección", name: "address", widget: "string", required: false }
