@@ -1,0 +1,16 @@
+backend:
+  name: github
+  repo: juanbucor-star/emsei-web
+  branch: main
+  auth_type: implicit
+  app_id: Ov23liWb9vBzNsvgndOc
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: informacion
+    label: Contenido del Sitio
+    file: site_data/informacion.json
+    fields:
+      - { label: "Título", name: "hero_title", widget: "string" }
