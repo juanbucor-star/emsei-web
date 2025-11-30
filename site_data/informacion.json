@@ -1,8 +1,16 @@
 {
+  "branding": {
+    "logo_text": "Grupo EMSEI S.A.S.",
+    "logo_subtitle": "Servicios eléctricos profesionales para countries y barrios en Córdoba.",
+    "logo_image": "/images/uploads/logo-emsei.png",
+    "logo_alt": "Isotipo Grupo EMSEI"
+  },
   "hero": {
     "title": "Soluciones eléctricas integrales para countries y barrios.",
     "subtitle": "Servicios eléctricos profesionales para consorcios, countries, comercios y obras en Córdoba.",
-    "text": "Impulsamos el funcionamiento seguro y confiable de countries, barrios cerrados, complejos premium y comercios, ofreciendo soluciones eléctricas integrales y un acompañamiento cercano para administradores y emprendedores."
+    "text": "Impulsamos el funcionamiento seguro y confiable de countries, barrios cerrados, complejos premium y comercios, ofreciendo soluciones eléctricas integrales y un acompañamiento cercano para administradores y emprendedores.",
+    "image": "/images/uploads/hero-tableros.jpg",
+    "image_alt": "Tableros eléctricos y luminarias en country de Córdoba"
   },
   "segments": [
     {
@@ -24,6 +32,29 @@
       "title": "Distribución de materiales eléctricos",
       "tagline": "Logística y abastecimiento confiable.",
       "description": "Provisión y coordinación de materiales eléctricos para obras, reformas y mantenimiento, alineados con la especificación técnica de cada proyecto."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Cambio integral de iluminación en country MilNueveDiez",
+      "location": "Villa Belgrano — Córdoba",
+      "description": "Reemplazo de luminarias tradicionales por tecnología LED en espacios comunes, accesos y perímetro del emprendimiento, mejorando eficiencia y seguridad.",
+      "image": "/images/uploads/proyecto-milnuevediez.jpg",
+      "image_alt": "Iluminación LED en country MilNueveDiez"
+    },
+    {
+      "title": "Nuevos tableros generales en complejo Chateau Village",
+      "location": "Villa Belgrano — Córdoba",
+      "description": "Diseño, armado e instalación de tableros generales y seccionales para alimentación de sectores comunes y sistemas críticos del complejo.",
+      "image": "/images/uploads/proyecto-chateau.jpg",
+      "image_alt": "Tableros eléctricos en sala técnica"
+    },
+    {
+      "title": "Adecuación a norma y mantenimiento en La Rosella",
+      "location": "Valle Escondido — Córdoba",
+      "description": "Relevamiento completo de instalaciones, adecuación a normativa vigente y plan de mantenimiento programado para minimizar riesgos eléctricos.",
+      "image": "/images/uploads/proyecto-la-rosella.jpg",
+      "image_alt": "Infraestructura eléctrica en barrio privado"
     }
   ],
   "clients_title": "Nuestros clientes, nuestro respaldo.",

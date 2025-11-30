@@ -59,19 +59,21 @@
   <header class="border-b border-slate-200 bg-white/80 backdrop-blur z-20 sticky top-0">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
       <a href="#inicio" class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-emseiBlue flex items-center justify-center text-white text-lg font-semibold shadow-sm">
-          GE
+        <div class="w-9 h-9 rounded-xl bg-emseiBlue flex items-center justify-center text-white text-lg font-semibold shadow-sm overflow-hidden">
+          <img id="logo-image" src="" alt="Grupo EMSEI" class="w-full h-full object-contain hidden" />
+          <span id="logo-initials">GE</span>
         </div>
         <div>
-          <div class="text-sm font-semibold leading-tight">Grupo EMSEI S.A.S.</div>
-          <div class="text-[11px] text-slate-500 -mt-0.5">Servicios eléctricos para countries y barrios</div>
+          <div id="logo-text" class="text-sm font-semibold leading-tight">Grupo EMSEI S.A.S.</div>
+          <div id="logo-subtitle" class="text-[11px] text-slate-500 -mt-0.5">Servicios eléctricos para countries y barrios</div>
         </div>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-[13px] font-medium">
-        <a href="#inicio" class="hover:text-emseiAccent transition-colors">Inicio</a>
+        <a href="#inicio" class="hover:text-emseiAccent transition-colors">Página principal</a>
         <a href="#servicios" class="hover:text-emseiAccent transition-colors">Servicios</a>
+        <a href="#trabajos" class="hover:text-emseiAccent transition-colors">Trabajos reales</a>
         <a href="#clientes" class="hover:text-emseiAccent transition-colors">Nuestros clientes</a>
-        <a href="#tarjetas" class="hover:text-emseiAccent transition-colors">Tarjetas</a>
+        <a href="#tarjetas" class="hover:text-emseiAccent transition-colors">Contacto QR y tarjetas</a>
         <a href="#quienes-somos" class="hover:text-emseiAccent transition-colors">¿Quiénes somos?</a>
         <a href="#contacto" class="hover:text-emseiAccent transition-colors">Contacto</a>
       </nav>
@@ -84,10 +86,11 @@
     </div>
     <nav id="mobile-nav" class="md:hidden hidden border-t border-slate-200 bg-white">
       <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
-        <a href="#inicio" class="py-1">Inicio</a>
+        <a href="#inicio" class="py-1">Página principal</a>
         <a href="#servicios" class="py-1">Servicios</a>
+        <a href="#trabajos" class="py-1">Trabajos reales</a>
         <a href="#clientes" class="py-1">Nuestros clientes</a>
-        <a href="#tarjetas" class="py-1">Tarjetas</a>
+        <a href="#tarjetas" class="py-1">Contacto QR y tarjetas</a>
         <a href="#quienes-somos" class="py-1">¿Quiénes somos?</a>
         <a href="#contacto" class="py-1">Contacto</a>
       </div>
@@ -136,6 +139,10 @@
 
         <!-- Panel lateral -->
         <aside class="bg-white/80 backdrop-blur rounded-2xl shadow-xl border border-slate-100 p-4 sm:p-5">
+          <div id="hero-image-container" class="mb-3 rounded-xl overflow-hidden border border-slate-200/80 shadow-sm hidden">
+            <img id="hero-image" src="" alt="" class="w-full h-32 sm:h-40 object-cover" />
+          </div>
+
           <h2 class="text-sm font-semibold mb-2 text-slate-800">Contacto directo</h2>
           <p class="text-xs text-slate-500 mb-4">
             Si administrás un country, barrio privado o complejo, podés coordinar una visita técnica o una primera reunión.
@@ -207,6 +214,26 @@
       </div>
     </section>
 
+    <!-- TRABAJOS REALES -->
+    <section id="trabajos" class="bg-emseiLight/60 border-y border-slate-200/70 hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-1">
+              Trabajos reales en countries y barrios.
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 max-w-2xl">
+              Algunos ejemplos de obras, mantenimientos y mejoras que realizamos para nuestros clientes.
+            </p>
+          </div>
+        </div>
+
+        <div id="projects-grid" class="grid md:grid-cols-3 gap-4 sm:gap-5">
+          <!-- Tarjetas de proyectos generadas por script.js -->
+        </div>
+      </div>
+    </section>
+
     <!-- NUESTROS CLIENTES -->
     <section id="clientes" class="bg-slate-50/80">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
@@ -227,13 +254,13 @@
       </div>
     </section>
 
-    <!-- TARJETAS -->
+    <!-- TARJETAS / CONTACTO QR -->
     <section id="tarjetas" class="bg-white/90 backdrop-blur border-y border-slate-200/70">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
         <div class="grid md:grid-cols-[1.1fr,0.9fr] gap-8 items-start">
           <div>
             <h2 id="cards-title" class="text-xl sm:text-2xl font-semibold text-slate-900 mb-2">
-              Tarjetas y contacto QR para tu emprendimiento.
+              Tarjetas, cartelería y contacto QR para tu barrio.
             </h2>
             <p id="cards-intro" class="text-xs sm:text-sm text-slate-500 mb-4 max-w-xl">
               Sumamos materiales de comunicación para que tus propietarios, inquilinos y proveedores tengan siempre a mano el contacto eléctrico del barrio.
@@ -285,21 +312,15 @@
         <div class="grid md:grid-cols-3 gap-5 text-xs sm:text-sm">
           <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5">
             <h3 class="text-sm font-semibold text-slate-900 mb-2">Misión</h3>
-            <p id="about-mission" class="text-slate-600 text-[13px] leading-relaxed">
-              <!-- contenido desde JSON -->
-            </p>
+            <p id="about-mission" class="text-slate-600 text-[13px] leading-relaxed"></p>
           </article>
           <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5">
             <h3 class="text-sm font-semibold text-slate-900 mb-2">Visión</h3>
-            <p id="about-vision" class="text-slate-600 text-[13px] leading-relaxed">
-              <!-- contenido desde JSON -->
-            </p>
+            <p id="about-vision" class="text-slate-600 text-[13px] leading-relaxed"></p>
           </article>
           <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5">
             <h3 class="text-sm font-semibold text-slate-900 mb-2">Valores</h3>
-            <p id="about-values" class="text-slate-600 text-[13px] leading-relaxed">
-              <!-- contenido desde JSON -->
-            </p>
+            <p id="about-values" class="text-slate-600 text-[13px] leading-relaxed"></p>
           </article>
         </div>
       </div>
@@ -307,88 +328,4 @@
 
     <!-- CONTACTO -->
     <section id="contacto" class="bg-white/90 backdrop-blur border-t border-slate-200/70">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
-        <div class="grid md:grid-cols-[1.1fr,0.9fr] gap-8 items-start">
-          <div>
-            <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-2">
-              Hablemos sobre la seguridad eléctrica de tu comunidad.
-            </h2>
-            <p class="text-xs sm:text-sm text-slate-500 mb-4 max-w-xl">
-              Podés escribirnos o llamarnos para coordinar una visita, una auditoría de instalaciones o un plan de mejoras.
-            </p>
-            <ul class="space-y-2 text-xs sm:text-sm text-slate-600 mb-5">
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5">•</span>
-                <span>Relevamientos eléctricos y diagnóstico de riesgo.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5">•</span>
-                <span>Obras nuevas, ampliaciones y adecuaciones a norma.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5">•</span>
-                <span>Mantenimiento preventivo y correctivo en consorcios, countries y comercios.</span>
-              </li>
-            </ul>
-            <div class="flex flex-wrap gap-3 text-xs sm:text-sm">
-              <a id="cta-phone-main" href="tel:3512035158" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emseiBlue text-white font-medium shadow-sm hover:bg-slate-900 transition-colors">
-                Llamar ahora
-              </a>
-              <a id="cta-email" href="mailto:contacto@grupoemsei.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-300 text-slate-800 font-medium bg-white/70 hover:border-emseiAccent hover:text-emseiAccent transition-colors">
-                Escribir por mail
-              </a>
-            </div>
-          </div>
-
-          <div class="bg-slate-900 text-slate-50 rounded-2xl shadow-md border border-slate-800 p-4 sm:p-5 flex flex-col gap-3">
-            <h3 class="text-sm font-semibold text-slate-50 mb-1">Datos de contacto EMSEI</h3>
-            <p class="text-[11px] text-slate-200 mb-3">
-              Información rápida para guardar, compartir por WhatsApp o incorporar en la documentación interna de tu barrio.
-            </p>
-            <div class="space-y-3 text-xs">
-              <div class="flex items-center justify-between gap-3">
-                <span class="text-slate-300">Teléfonos</span>
-                <span class="font-medium text-slate-50 text-right">
-                  <span id="contact-phone-main-inline">351 2035158</span><br/>
-                  <span id="contact-phone-secondary-inline" class="text-slate-200">351 3482841</span>
-                </span>
-              </div>
-              <div class="flex items-center justify-between gap-3">
-                <span class="text-slate-300">Mail</span>
-                <span id="contact-email-inline" class="font-medium text-slate-50 text-right break-all">
-                  contacto@grupoemsei.com
-                </span>
-              </div>
-              <div class="flex items-start justify-between gap-3">
-                <span class="text-slate-300 mt-0.5">Dirección</span>
-                <span id="contact-address-inline" class="font-medium text-slate-50 text-right text-[11px] sm:text-[12px]">
-                  Av. Sagrada Familia 1171
-                </span>
-              </div>
-            </div>
-            <div class="pt-3 mt-1 border-t border-slate-700 text-[11px] text-slate-300">
-              Sitio inspirado, ampliado y optimizado a partir de la presencia oficial de Grupo EMSEI en la web.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white/90 backdrop-blur">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500">
-      <div>
-        © <span id="footer-year"></span> Grupo EMSEI S.A.S. — Todos los derechos reservados.
-      </div>
-      <div class="flex items-center gap-4">
-        <span>Tel: <span id="footer-phone-main">351 2035158</span> / <span id="footer-phone-secondary">351 3482841</span></span>
-        <span class="hidden sm:inline">|</span>
-        <span class="hidden sm:inline" id="footer-email">contacto@grupoemsei.com</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8
