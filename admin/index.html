@@ -1,38 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin — Grupo EMSEI</title>
+  <meta charset="UTF-8" />
+  <title>Admin - Decap CMS</title>
 
-  <!-- Netlify Identity -->
+  <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- Desactivar preview (evita errores bootstrap.js appendChild null) -->
-  <script>
-    window.CMS_DISABLE_PREVIEW_STYLES = true;
-    window.CMS_MANUAL_INIT = true;
-  </script>
-
-  <!-- CMS local (evita bloqueos CSP) -->
-  <script src="/admin/vendor/netlify-cms.js"></script>
+  <!-- Decap CMS (Netlify CMS) -->
+  <script src="https://unpkg.com/decap-cms@2.10.192/dist/decap-cms.js"></script>
 </head>
-
 <body>
-  <div id="nc-root"></div>
 
   <script>
-    if (typeof CMS !== 'undefined') {
-      CMS.init({
-        config: { load_config_file: true }
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            window.location.reload();
+          });
+        }
       });
-
-      // Desactivar preview completamente
-      CMS.registerPreviewTemplate("contenido", () => null);
-      CMS.registerPreviewStyle("", { raw: true });
-    } else {
-      console.error("CMS no se cargó correctamente.");
     }
   </script>
+
 </body>
 </html>

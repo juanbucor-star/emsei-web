@@ -5,6 +5,9 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
+site_url: "https://resonant-griffin-1ec533.netlify.app"
+display_url: "https://resonant-griffin-1ec533.netlify.app"
+
 collections:
   - name: "contenido"
     label: "Contenido del sitio"
@@ -83,7 +86,4 @@ collections:
             name: "contact"
             widget: "object"
             fields:
-              - { label: "Teléfono principal", name: "phone_main", widget: "string" }
-              - { label: "Teléfono secundario", name: "phone_secondary", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Dirección", name: "address", widget: "string" }
+              - { label: "Teléfono principal", name: "phone_main", widge_
