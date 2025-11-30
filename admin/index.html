@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Admin - Decap CMS</title>
+  <title>Admin — Decap CMS</title>
 
-  <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-  <!-- Decap CMS (Netlify CMS) -->
   <script src="https://unpkg.com/decap-cms@2.10.192/dist/decap-cms.js"></script>
 </head>
-<body>
 
+<body>
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
@@ -23,6 +20,5 @@
       });
     }
   </script>
-
 </body>
 </html>
