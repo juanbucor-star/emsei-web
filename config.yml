@@ -44,7 +44,6 @@ collections:
           - label: "Trabajos reales"
             name: "projects"
             widget: "list"
-            required: false
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Ubicación", name: "location", widget: "string", required: false }
