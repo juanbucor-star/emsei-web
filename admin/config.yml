@@ -3,7 +3,8 @@ backend:
   repo: juanbucor-star/emsei-web
   branch: main
   auth_type: implicit
-  client_id: Ov23lijkvgKWvnn5TQId
+  base_url: "https://TU-WORKER-o-FUNCTION.emsei.com"  # tu proxy OAuth
+  auth_endpoint: "auth"
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
