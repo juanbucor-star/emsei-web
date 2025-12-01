@@ -13,9 +13,9 @@
   
   <script>
     // Se ha eliminado el bloque CMS.init() con la configuración en línea.
-    // Una vez que el archivo config.yml se mueva a /admin/config.yml, 
-    // Netlify CMS lo encontrará y se inicializará automáticamente, 
-    // solucionando el problema de la pantalla en blanco.
+    // Al no haber script de inicialización, Netlify CMS buscará automáticamente
+    // el archivo config.yml en este mismo directorio (./admin/config.yml)
+    // e iniciará su aplicación correctamente en #nc-root.
   </script>
 </body>
 </html>
