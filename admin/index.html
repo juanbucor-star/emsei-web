@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin — Grupo EMSEI</title>
 
-  <!-- Decap CMS (ex Netlify CMS) -->
+  <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <link
     rel="stylesheet"
@@ -13,7 +13,18 @@
   />
 </head>
 <body>
-  <!-- Contenedor donde se monta el CMS -->
+
+  <!-- ESTE ES EL CONTENEDOR QUE NECESITA DECAP CMS -->
   <div id="nc-root"></div>
+
+  <!-- Inicialización recomendada -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (typeof CMS !== "undefined") {
+        CMS.init();
+      }
+    });
+  </script>
+
 </body>
 </html>
