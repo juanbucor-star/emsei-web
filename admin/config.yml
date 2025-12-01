@@ -9,72 +9,64 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "contenido"
-    label: "Contenido del sitio"
+  - name: contenido
+    label: Contenido del sitio
     files:
-      - name: "informacion"
-        label: "Información general"
-        file: "site_data/informacion.json"
+      - name: informacion
+        label: Información general
+        file: site_data/informacion.json
         fields:
-
-          # HERO
-          - label: "Hero"
-            name: "hero"
-            widget: "object"
+          - label: Hero
+            name: hero
+            widget: object
             fields:
-              - { label: "Título", name: "title", widget: "string" }
-              - { label: "Subtítulo", name: "subtitle", widget: "string" }
-              - { label: "Texto", name: "text", widget: "text" }
+              - { label: "Título", name: "title", widget: string }
+              - { label: "Subtítulo", name: "subtitle", widget: string }
+              - { label: "Texto", name: "text", widget: text }
 
-          # SEGMENTS (list)
-          - label: "Segmentos"
-            name: "segments"
-            widget: "list"
+          - label: Segmentos
+            name: segments
+            widget: list
             fields:
-              - { label: "Título", name: "title", widget: "string" }
-              - { label: "Tagline", name: "tagline", widget: "string" }
-              - { label: "Descripción", name: "description", widget: "text" }
+              - { label: "Título", name: "title", widget: string }
+              - { label: "Tagline", name: "tagline", widget: string }
+              - { label: "Descripción", name: "description", widget: text }
 
-          # CLIENTS TITLE
-          - { label: "Título clientes", name: "clients_title", widget: "string" }
+          - { label: "Título clientes", name: "clients_title", widget: string }
 
-          # CLIENTS (list)
-          - label: "Clientes"
-            name: "clients"
-            widget: "list"
+          - label: Clientes
+            name: clients
+            widget: list
             fields:
-              - { label: "Nombre", name: "name", widget: "string" }
-              - { label: "Ubicación", name: "location", widget: "string" }
+              - { label: "Nombre", name: "name", widget: string }
+              - { label: "Ubicación", name: "location", widget: string }
 
-          # CARDS (object)
-          - label: "Tarjetas"
-            name: "cards"
-            widget: "object"
+          - label: Tarjetas
+            name: cards
+            widget: object
             fields:
-              - { label: "Título", name: "title", widget: "string" }
-              - { label: "Introducción", name: "intro", widget: "text" }
-              - label: "Items"
-                name: "items"
-                widget: "list"
+              - { label: "Título", name: "title", widget: string }
+              - { label: "Introducción", name: "intro", widget: text }
+              - label: Ítems
+                name: items
+                widget: list
                 fields:
-                  - { label: "Título", name: "title", widget: "string" }
-                  - { label: "Texto", name: "text", widget: "text" }
+                  - { label: "Título", name: "title", widget: string }
+                  - { label: "Texto", name: "text", widget: text }
 
-          # ABOUT
-          - label: "Sobre EMSEI"
-            name: "about"
-            widget: "object"
+          - label: Sobre EMSEI
+            name: about
+            widget: object
             fields:
-              - { label: "Misión", name: "mission", widget: "text" }
-              - { label: "Visión", name: "vision", widget: "text" }
-              - { label: "Valores", name: "values", widget: "text" }
+              - { label: "Misión", name: "mission", widget: text }
+              - { label: "Visión", name: "vision", widget: text }
+              - { label: "Valores", name: "values", widget: text }
 
-          # CONTACT
-          - label: "Contacto"
-            name: "contact"
-            widget: "object"
+          - label: Contacto
+            name: contact
+            widget: object
             fields:
-              - { label: "Teléfono principal", name: "phone_main", widget: "string" }
-              - { label: "Teléfono secundario", name: "phone_secondary", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Dirección", name: "address", widget: "string" }
+              - { label: "Teléfono principal", name: "phone_main", widget: string }
+              - { label: "Teléfono secundario", name: "phone_secondary", widget: string }
+              - { label: "Email", name: "email", widget: string }
+              - { label: "Dirección", name: "address", widget: string }
