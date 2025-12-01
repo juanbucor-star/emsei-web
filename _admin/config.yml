@@ -2,7 +2,30 @@ backend:
   name: github
   repo: juanbucor-star/emsei-web
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  auth_type: implicit
+  app_id: Ov23lijkvgKWvnn5TQId     # <-- tu Client ID de GitHub OAuth
+
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
+
+collections:
+  - name: "informacion"
+    label: "Información del sitio"
+    files:
+      - name: "principal"
+        label: "Contenido principal"
+        file: "site_data/informacion.json"
+        fields:
+          - { label: "Branding - Texto del logo", name: "logo_text", widget: "string" }
+          - { label: "Subtítulo del logo", name: "logo_subtitle", widget: "string", required: false }
+          - { label: "Logo (imagen)", name: "logo_image", widget: "image", required: false }
+          - { label: "Alt del logo", name: "logo_alt", widget: "string", required: false }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descripción", name: "description", widget: "text" }
+              - { label: "Imagen Hero", name: "image", widget: "image" }
+              - { label: "Alt imagen", name: "alt", widget: "string" }
