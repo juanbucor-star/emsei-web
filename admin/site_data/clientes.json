@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Country / Barrio Privado",
+    "segmento": "Urbanizaciones y consorcios",
+    "logo": "images/uploads/cliente-country.png",
+    "url": ""
+  },
+  {
+    "nombre": "Industrias y Plantas",
+    "segmento": "Producción y logística",
+    "logo": "images/uploads/cliente-industria.png",
+    "url": ""
+  },
+  {
+    "nombre": "Empresas de servicios",
+    "segmento": "Oficinas y edificios corporativos",
+    "logo": "images/uploads/cliente-servicios.png",
+    "url": ""
+  },
+  {
+    "nombre": "Estudios de arquitectura e ingeniería",
+    "segmento": "Alianzas estratégicas",
+    "logo": "images/uploads/cliente-estudio.png",
+    "url": ""
+  }
+]
