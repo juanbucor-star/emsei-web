@@ -3,7 +3,7 @@ backend:
   repo: juanbucor-star/emsei-web
   branch: main
   auth_type: implicit
-  app_id: Ov23lijkvgKWvnn5TQId
+  client_id: Ov23lijkvgKWvnn5TQId
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
