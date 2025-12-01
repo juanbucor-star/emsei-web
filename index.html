@@ -1,160 +1,759 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grupo EMSEI — Soluciones Eléctricas Integrales</title>
-  <meta name="description" content="Proyecto, ejecución y mantenimiento de soluciones eléctricas para empresas, industrias y barrios privados." />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="brand-mark">GE</div>
-        <div class="brand-text">
-          <span id="branding-logo-text" class="brand-title">Grupo EMSEI</span>
-          <span id="branding-logo-subtitle" class="brand-subtitle">Soluciones Eléctricas Integrales</span>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Grupo EMSEI – Soluciones Eléctricas Profesionales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fuente moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      /* Animaciones suaves */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-up {
+        animation: fadeUp 0.7s ease-out forwards;
+      }
+
+      .glass {
+        backdrop-filter: blur(12px);
+        background: rgba(17, 24, 39, 0.72);
+      }
+    </style>
+  </head>
+  <body class="bg-slate-950 text-slate-50">
+    <!-- Top bar -->
+    <div class="border-b border-slate-800 bg-slate-950/90">
+      <div
+        class="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between text-xs md:text-sm text-slate-300"
+      >
+        <span class="flex items-center gap-2">
+          <!-- Icono rayo -->
+          <svg
+            class="w-4 h-4 text-yellow-400"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"
+            />
+          </svg>
+          Ingeniería, instalaciones y mantenimiento eléctrico integral
+        </span>
+        <div class="flex items-center gap-4">
+          <span class="hidden sm:inline text-slate-400">Soporte 24/7</span>
+          <span class="font-semibold text-yellow-400">351 2035158</span>
         </div>
       </div>
-      <nav class="main-nav">
-        <a href="#hero">Inicio</a>
-        <a href="#services">Servicios</a>
-        <a href="#clients">Clientes</a>
-        <a href="#works">Trabajos</a>
-        <a href="#contact">Contacto</a>
-      </nav>
-      <a href="#contact" class="btn-primary btn-small">Pedir asesoría</a>
     </div>
-  </header>
 
-  <main>
-    <!-- HERO -->
-    <section id="hero" class="hero">
-      <div class="hero-overlay"></div>
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <p id="hero-badge" class="hero-badge"></p>
-          <h1 id="hero-title">Soluciones eléctricas integrales</h1>
-          <p id="hero-subtitle" class="hero-subtitle">
-            Proyecto, ejecución y mantenimiento para empresas, industrias y barrios cerrados.
-          </p>
-          <div class="hero-cta">
-            <a id="hero-cta" href="#contact" class="btn-primary">Hablemos de tu proyecto</a>
-            <span id="branding-tagline" class="hero-note">Energía segura, proyectos a medida.</span>
+    <!-- Navbar -->
+    <header
+      class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/90 backdrop-blur"
+    >
+      <nav
+        class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-9 h-9 rounded-xl bg-gradient-to-tr from-yellow-400 to-amber-500 flex items-center justify-center shadow-lg shadow-yellow-500/30"
+          >
+            <svg
+              class="w-5 h-5 text-slate-950"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"
+              />
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <div class="text-sm font-semibold tracking-wide">
+              GRUPO EMSEI
+            </div>
+            <div class="text-[11px] text-slate-400">
+              Soluciones Eléctricas Integrales
+            </div>
           </div>
         </div>
-        <div class="hero-highlights">
-          <div class="highlight-card">
-            <span class="highlight-title">+5 años</span>
-            <span class="highlight-text">de experiencia en el rubro</span>
+        <div class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#inicio" class="hover:text-yellow-300">Inicio</a>
+          <a href="#servicios" class="hover:text-yellow-300">Servicios</a>
+          <a href="#proyectos" class="hover:text-yellow-300">Proyectos</a>
+          <a href="#clientes" class="hover:text-yellow-300">Clientes</a>
+          <a href="#tarjetas" class="hover:text-yellow-300">Tarjetas</a>
+          <a href="#contacto" class="hover:text-yellow-300">Contacto</a>
+        </div>
+        <a
+          href="#contacto"
+          class="hidden sm:inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg bg-yellow-400 text-slate-950 hover:bg-yellow-300 transition"
+        >
+          Presupuesto
+        </a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section
+      id="inicio"
+      class="relative overflow-hidden border-b border-slate-800/60"
+    >
+      <!-- Fondo con circuitos -->
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(250,204,21,0.18),_transparent_55%)]"
+      ></div>
+      <div
+        class="absolute inset-0 opacity-[0.08] bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')]"
+      ></div>
+
+      <div
+        class="relative max-w-6xl mx-auto px-4 pt-14 pb-20 grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center"
+      >
+        <!-- Texto -->
+        <div class="fade-up">
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-slate-900/60 px-3 py-1 text-[11px] text-yellow-300 mb-4"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"
+            ></span>
+            Ingenieros electricistas · Matriculación y normativa vigente
           </div>
-          <div class="highlight-card">
-            <span class="highlight-title">Servicio 360º</span>
-            <span class="highlight-text">Proyecto, obra y mantenimiento</span>
+
+          <h1
+            class="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-slate-50"
+          >
+            Energía segura y confiable
+            <span class="text-yellow-300">para industrias, comercios y
+              vivienda</span>
+          </h1>
+
+          <p class="mt-5 text-sm md:text-base text-slate-300 max-w-xl">
+            Diseñamos, instalamos y mantenemos sistemas eléctricos de alta
+            exigencia:
+            tableros, luminotecnia LED, puesta a tierra, maniobras y redes
+            completas.
+          </p>
+
+          <!-- Etiquetas mezcla industrial / residencial -->
+          <div class="mt-6 flex flex-wrap gap-2 text-[11px]">
+            <span
+              class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700/80 text-slate-200"
+            >Industria</span>
+            <span
+              class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700/80 text-slate-200"
+            >Comercios</span>
+            <span
+              class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700/80 text-slate-200"
+            >Countries y Barrios Privados</span>
+            <span
+              class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700/80 text-slate-200"
+            >Viviendas y consorcios</span>
           </div>
-          <div class="highlight-card">
-            <span class="highlight-title">Respuesta rápida</span>
-            <span class="highlight-text">Para urgencias y paradas de planta</span>
+
+          <!-- Botones -->
+          <div class="mt-8 flex flex-wrap gap-4 items-center">
+            <a
+              href="#contacto"
+              class="inline-flex items-center gap-2 rounded-lg bg-yellow-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-yellow-500/40 hover:bg-yellow-300 transition"
+            >
+              Solicitar presupuesto
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="M13 6l6 6-6 6" />
+              </svg>
+            </a>
+
+            <a
+              href="#servicios"
+              class="inline-flex items-center gap-2 text-sm text-slate-200 hover:text-yellow-300"
+            >
+              Ver servicios
+              <span class="w-5 h-[1px] bg-yellow-400"></span>
+            </a>
+          </div>
+
+          <!-- Datos rápidos -->
+          <div
+            class="mt-10 grid grid-cols-3 gap-4 max-w-md text-[11px] md:text-xs"
+          >
+            <div>
+              <div class="text-yellow-300 font-semibold text-sm">15+ años</div>
+              <div class="text-slate-400">Experiencia en proyectos eléctricos</div>
+            </div>
+            <div>
+              <div class="text-yellow-300 font-semibold text-sm">24/7</div>
+              <div class="text-slate-400">Atención en urgencias y fallas</div>
+            </div>
+            <div>
+              <div class="text-yellow-300 font-semibold text-sm">Normas IRAM</div>
+              <div class="text-slate-400">Cumplimiento de normativa vigente</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagen lado derecho -->
+        <div
+          class="relative flex justify-center md:justify-end fade-up md:[animation-delay:0.15s]"
+        >
+          <div
+            class="absolute -top-10 -right-10 w-52 h-52 rounded-full bg-yellow-400/20 blur-3xl"
+          ></div>
+          <div
+            class="glass rounded-2xl border border-slate-700/80 shadow-2xl max-w-md w-full overflow-hidden"
+          >
+            <div class="relative">
+              <img
+                src="https://images.pexels.com/photos/4254168/pexels-photo-4254168.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Técnicos electricistas trabajando"
+                class="w-full h-60 object-cover object-center"
+              />
+              <!-- Overlay pequeño industrial -->
+              <div
+                class="absolute bottom-3 left-3 rounded-xl bg-slate-950/80 px-3 py-2 text-[11px] border border-yellow-400/40"
+              >
+                Obra industrial · Tableros y canalizaciones
+              </div>
+            </div>
+
+            <!-- Mini tablero / panel info -->
+            <div class="p-4 md:p-5 space-y-3">
+              <div class="flex items-center justify-between gap-3 text-xs">
+                <span class="text-slate-300">Estado general del sistema</span>
+                <span
+                  class="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1 text-emerald-300 border border-emerald-500/40"
+                >
+                  <span
+                    class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"
+                  ></span>
+                  Estable
+                </span>
+              </div>
+
+              <div class="grid grid-cols-3 gap-3 text-[10px] text-slate-300">
+                <div
+                  class="rounded-lg bg-slate-900/70 border border-slate-700/80 p-2"
+                >
+                  <div class="text-[9px] text-slate-400">Tensión</div>
+                  <div class="text-xs font-semibold text-yellow-300">
+                    380 V
+                  </div>
+                </div>
+                <div
+                  class="rounded-lg bg-slate-900/70 border border-slate-700/80 p-2"
+                >
+                  <div class="text-[9px] text-slate-400">Monitoreo</div>
+                  <div class="text-xs font-semibold text-yellow-300">
+                    Online
+                  </div>
+                </div>
+                <div
+                  class="rounded-lg bg-slate-900/70 border border-slate-700/80 p-2"
+                >
+                  <div class="text-[9px] text-slate-400">Clientes</div>
+                  <div class="text-xs font-semibold text-yellow-300">
+                    +120
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-[11px]">
+                <span class="text-slate-400">Sectores:</span>
+                <span class="text-slate-200">
+                  Industria · Comercios · Residencial
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- SERVICIOS -->
-    <section id="services" class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Servicios</h2>
-          <p>Soluciones eléctricas pensadas para continuidad operativa y seguridad.</p>
+    <section
+      id="servicios"
+      class="border-b border-slate-800/60 bg-slate-950 py-16 md:py-20"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-50">
+              Servicios eléctricos profesionales
+            </h2>
+            <p class="mt-2 text-sm text-slate-400 max-w-xl">
+              Acompañamos a empresas, consorcios, comercios y viviendas con un
+              abanico completo de soluciones eléctricas, desde el
+              diseño hasta la ejecución y mantenimiento.
+            </p>
+          </div>
+          <div class="text-xs text-slate-400">
+            Industria · Comercios · Countries · Viviendas · Consorcios
+          </div>
         </div>
-        <div id="services-list" class="cards-grid"></div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Industrial -->
+          <article
+            class="relative rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:-translate-y-1 hover:border-yellow-400/70 hover:shadow-xl hover:shadow-yellow-500/10 transition"
+          >
+            <div
+              class="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-400/10 text-yellow-300 border border-yellow-400/40"
+            >
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 12h18" />
+                <path d="M12 3v18" />
+              </svg>
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">
+              Proyectos eléctricos industriales
+            </h3>
+            <p class="mt-2 text-xs text-slate-400">
+              Diseño y ejecución de tableros, canalizaciones, iluminación
+              de nave, fuerza motriz y maniobras para líneas de producción.
+            </p>
+          </article>
+
+          <!-- Comercios / Oficinas -->
+          <article
+            class="relative rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:-translate-y-1 hover:border-yellow-400/70 hover:shadow-xl hover:shadow-yellow-500/10 transition"
+          >
+            <div
+              class="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-300 border border-emerald-400/40"
+            >
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path d="M3 10h18" />
+              </svg>
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">
+              Comercios, oficinas y locales
+            </h3>
+            <p class="mt-2 text-xs text-slate-400">
+              Adecuación de tableros, circuitos de toma y luz, iluminación LED
+              comercial, cartelería y respaldo energético.
+            </p>
+          </article>
+
+          <!-- Residencial -->
+          <article
+            class="relative rounded-2xl border border-slate-800 bg-slate-900/60 p-5 hover:-translate-y-1 hover:border-yellow-400/70 hover:shadow-xl hover:shadow-yellow-500/10 transition"
+          >
+            <div
+              class="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-sky-400/10 text-sky-300 border border-sky-400/40"
+            >
+              <svg
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 11L12 3l9 8" />
+                <path d="M5 10v10h14V10" />
+              </svg>
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">
+              Vivienda, countries y consorcios
+            </h3>
+            <p class="mt-2 text-xs text-slate-400">
+              Instalaciones nuevas, ampliaciones, puesta a tierra, protecciones
+              diferenciales y recableado en propiedades.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section
+      id="proyectos"
+      class="border-b border-slate-800/60 bg-slate-950 py-16 md:py-20"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-50">
+              Trabajos reales
+            </h2>
+            <p class="mt-2 text-sm text-slate-400 max-w-xl">
+              Algunos ejemplos de proyectos en industrias, comercios y
+              residencias donde participamos como responsables eléctricos.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Proyecto 1 -->
+          <article class="group rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60">
+            <div class="relative">
+              <img
+                src="https://images.pexels.com/photos/4254165/pexels-photo-4254165.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Proyecto industrial"
+                class="h-48 w-full object-cover group-hover:scale-[1.03] transition-transform"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent opacity-80 group-hover:opacity-100 transition"
+              ></div>
+              <div
+                class="absolute bottom-3 left-3 right-3 text-xs text-slate-100"
+              >
+                <div class="font-medium">
+                  Cambio completo de iluminación LED en nave industrial
+                </div>
+                <div class="text-slate-400">
+                  Reducción de consumo y mejora en niveles de iluminación.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="group rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60">
+            <div class="relative">
+              <img
+                src="https://images.pexels.com/photos/3861438/pexels-photo-3861438.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Tableros eléctricos"
+                class="h-48 w-full object-cover group-hover:scale-[1.03] transition-transform"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent opacity-80 group-hover:opacity-100 transition"
+              ></div>
+              <div
+                class="absolute bottom-3 left-3 right-3 text-xs text-slate-100"
+              >
+                <div class="font-medium">
+                  Tableros trifásicos y seccionales en obra comercial
+                </div>
+                <div class="text-slate-400">
+                  Dimensionamiento, armado, etiquetado y puesta en servicio.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="group rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60">
+            <div class="relative">
+              <img
+                src="https://images.pexels.com/photos/4254160/pexels-photo-4254160.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Mantenimiento perimetral"
+                class="h-48 w-full object-cover group-hover:scale-[1.03] transition-transform"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent opacity-80 group-hover:opacity-100 transition"
+              ></div>
+              <div
+                class="absolute bottom-3 left-3 right-3 text-xs text-slate-100"
+              >
+                <div class="font-medium">
+                  Mantenimiento eléctrico perimetral en barrio privado
+                </div>
+                <div class="text-slate-400">
+                  Iluminación de perímetro, portones, CCTV y automatismos.
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- CLIENTES -->
-    <section id="clients" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>Clientes</h2>
-          <p>Empresas, industrias y barrios privados que confían en Grupo EMSEI.</p>
+    <section
+      id="clientes"
+      class="border-b border-slate-800/60 bg-slate-950 py-12 md:py-16"
+    >
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-lg md:text-xl font-semibold text-slate-50 mb-3">
+          Empresas, barrios y comercios que confían en nosotros
+        </h2>
+        <p class="text-xs text-slate-400 mb-8 max-w-xl mx-auto">
+          Trabajamos para industrias, countries, consorcios y marcas líderes,
+          con foco en continuidad de servicio y seguridad eléctrica.
+        </p>
+
+        <!-- Logos placeholders -->
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 text-[11px] text-slate-300"
+        >
+          <div
+            class="rounded-xl border border-slate-800 bg-slate-900/70 py-4 px-3"
+          >
+            Country / Barrio privado
+          </div>
+          <div
+            class="rounded-xl border border-slate-800 bg-slate-900/70 py-4 px-3"
+          >
+            Industria / Planta
+          </div>
+          <div
+            class="rounded-xl border border-slate-800 bg-slate-900/70 py-4 px-3"
+          >
+            Comercios / Locales
+          </div>
+          <div
+            class="rounded-xl border border-slate-800 bg-slate-900/70 py-4 px-3"
+          >
+            Estudios / Oficinas
+          </div>
         </div>
-        <div id="clients-list" class="clients-grid"></div>
       </div>
     </section>
 
-    <!-- TRABAJOS -->
-    <section id="works" class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>Trabajos realizados</h2>
-          <p>Algunos proyectos representativos de los últimos años.</p>
+    <!-- TARJETAS / QR -->
+    <section
+      id="tarjetas"
+      class="border-b border-slate-800/60 bg-slate-950 py-16 md:py-20"
+    >
+      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-slate-50 mb-3">
+            Tarjeta digital de contacto
+          </h2>
+          <p class="text-sm text-slate-400 mb-5 max-w-xl">
+            Integramos una tarjeta digital con código QR para que tus clientes
+            puedan agendar tus datos y abrir WhatsApp con un mensaje
+            predefinido en un solo paso.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li>• Escaneo rápido desde carteles, tableros o tableros de aviso.</li>
+            <li>• Mensaje de WhatsApp ya redactado para acelerar la respuesta.</li>
+            <li>• Ideal para consorcios, countries y clientes frecuentes.</li>
+          </ul>
         </div>
-        <div id="works-list" class="cards-grid"></div>
+
+        <!-- Vista previa tarjeta -->
+        <div
+          class="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 md:p-6 flex flex-col md:flex-row items-center gap-5 shadow-xl shadow-yellow-500/10"
+        >
+          <div
+            class="w-32 h-32 rounded-2xl bg-white flex items-center justify-center overflow-hidden"
+          >
+            <!-- Reemplazar por tu QR real -->
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=Whatsapp%20Grupo%20EMSEI"
+              alt="QR contacto WhatsApp"
+              class="w-28 h-28 object-contain"
+            />
+          </div>
+          <div class="flex-1 text-xs space-y-1">
+            <div class="text-[11px] text-slate-400 uppercase tracking-wide">
+              Tarjeta digital
+            </div>
+            <div class="text-sm font-semibold text-slate-50">
+              Grupo EMSEI – Soluciones Eléctricas
+            </div>
+            <div class="text-slate-300">351 2035158</div>
+            <div class="text-slate-400">
+              “Hola, necesito asesoramiento eléctrico para mi propiedad…”
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- CONTACTO -->
-    <section id="contact" class="section section-alt">
-      <div class="container contact-grid">
-        <div class="contact-info">
-          <h2>Contacto</h2>
-          <p id="contact-intro">
-            Contanos qué necesitás y coordinamos una visita técnica o una reunión con nuestro equipo.
+    <section
+      id="contacto"
+      class="bg-slate-950 py-16 md:py-20"
+    >
+      <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-slate-50 mb-3">
+            Contacto y presupuestos
+          </h2>
+          <p class="text-sm text-slate-400 mb-6 max-w-md">
+            Contanos qué necesitás: instalación nueva, adecuación, mantenimiento
+            o proyecto completo. Respondemos a la brevedad.
           </p>
-          <ul class="contact-list">
-            <li>
-              <span class="contact-label">Teléfono / WhatsApp</span>
-              <a id="contact-phone" href="tel:+543512035158">+54 351 203 5158</a>
-            </li>
-            <li>
-              <span class="contact-label">Email</span>
-              <a id="contact-email" href="mailto:info@grupoemsei.com">info@grupoemsei.com</a>
-            </li>
-            <li>
-              <span class="contact-label">Dirección</span>
-              <span id="contact-address">Córdoba, Argentina</span>
-            </li>
-            <li>
-              <span class="contact-label">Horario</span>
-              <span id="contact-hours">Lunes a viernes de 9 a 18 hs</span>
-            </li>
-          </ul>
-        </div>
-        <div class="contact-actions">
-          <div class="contact-card">
-            <h3>Mensaje directo</h3>
-            <p>Tu cliente puede usar este botón para abrir WhatsApp con un mensaje predefinido.</p>
-            <a id="contact-whatsapp-btn" class="btn-primary btn-full" target="_blank" rel="noopener">
-              Escribir por WhatsApp
-            </a>
+
+          <div class="space-y-3 text-xs text-slate-300">
+            <div class="flex items-center gap-3">
+              <span
+                class="w-7 h-7 rounded-xl bg-yellow-400/10 border border-yellow-400/40 flex items-center justify-center text-yellow-300"
+              >
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .09 3.39 2 2 0 0 1 2.05 1h3a2 2 0 0 1 2 1.72 12.4 12.4 0 0 0 .7 2.73 2 2 0 0 1-.45 2.11L6.1 9.76a16 16 0 0 0 8.14 8.14l2.2-1.19a2 2 0 0 1 2.11.16 12.4 12.4 0 0 0 2.73.7A2 2 0 0 1 22 16.92Z" />
+                </svg>
+              </span>
+              <div>
+                <div class="text-slate-400">WhatsApp</div>
+                <div class="text-slate-100 font-medium">
+                  351 2035158
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span
+                class="w-7 h-7 rounded-xl bg-sky-400/10 border border-sky-400/40 flex items-center justify-center text-sky-300"
+              >
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 4h16v16H4z" />
+                  <path d="M22 7l-10 8L2 7" />
+                </svg>
+              </span>
+              <div>
+                <div class="text-slate-400">Correo</div>
+                <div class="text-slate-100 font-medium">
+                  contacto@grupoemsei.com
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="contact-card">
-            <h3>Ubicación</h3>
-            <p>Podés incrustar un mapa o un enlace a Google Maps.</p>
-            <a id="contact-map-link" href="#" target="_blank" rel="noopener" class="link-inline">
-              Ver en Google Maps
-            </a>
-          </div>
         </div>
+
+        <!-- Formulario solo visual -->
+        <form
+          class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 md:p-6 text-xs space-y-4"
+        >
+          <div class="grid md:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-slate-400 mb-1">Nombre</label>
+              <input
+                type="text"
+                class="w-full rounded-lg bg-slate-950 border border-slate-700 px-3 py-2 text-xs outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400/60"
+                placeholder="Nombre y apellido"
+              />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Teléfono</label>
+              <input
+                type="text"
+                class="w-full rounded-lg bg-slate-950 border border-slate-700 px-3 py-2 text-xs outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400/60"
+                placeholder="Celular / WhatsApp"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-slate-400 mb-1">Tipo de servicio</label>
+            <select
+              class="w-full rounded-lg bg-slate-950 border border-slate-700 px-3 py-2 text-xs outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400/60"
+            >
+              <option>Instalación nueva</option>
+              <option>Adecuación / ampliación</option>
+              <option>Mantenimiento</option>
+              <option>Proyecto industrial</option>
+              <option>Otro (detallar)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-slate-400 mb-1">Detalle</label>
+            <textarea
+              rows="3"
+              class="w-full rounded-lg bg-slate-950 border border-slate-700 px-3 py-2 text-xs outline-none focus:border-yellow-400 focus:ring-1 focus:ring-yellow-400/60"
+              placeholder="Contanos brevemente qué necesitás…"
+            ></textarea>
+          </div>
+
+          <button
+            type="button"
+            class="w-full rounded-lg bg-yellow-400 py-2.5 text-xs font-semibold text-slate-950 hover:bg-yellow-300 transition"
+          >
+            Enviar consulta (solo diseño, sin lógica)
+          </button>
+        </form>
       </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-branding">
-        <span class="brand-title" id="footer-branding-title">Grupo EMSEI</span>
-        <span class="brand-subtitle" id="footer-branding-text">
-          Trabajamos con empresas, industrias, barrios cerrados y consorcios.
-        </span>
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-[11px]">
+      <div
+        class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-slate-500"
+      >
+        <div>© <span id="year"></span> Grupo EMSEI. Todos los derechos reservados.</div>
+        <div class="flex gap-3">
+          <span>Soluciones Eléctricas Integrales</span>
+        </div>
       </div>
-      <div class="footer-meta">
-        <span id="footer-year"></span> · Todos los derechos reservados.
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="script.js" defer></script>
-</body>
+    <!-- JS mínimo: año dinámico y scroll suave -->
+    <script>
+      document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href");
+          if (!targetId || targetId === "#") return;
+          const el = document.querySelector(targetId);
+          if (!el) return;
+          e.preventDefault();
+          window.scrollTo({
+            top: el.offsetTop - 80,
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
