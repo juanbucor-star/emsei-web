@@ -16,6 +16,8 @@ collections:
         label: "Información general"
         file: "site_data/informacion.json"
         fields:
+
+          # HERO
           - label: "Hero"
             name: "hero"
             widget: "object"
@@ -24,6 +26,7 @@ collections:
               - { label: "Subtítulo", name: "subtitle", widget: "string" }
               - { label: "Texto", name: "text", widget: "text" }
 
+          # SEGMENTS (list)
           - label: "Segmentos"
             name: "segments"
             widget: "list"
@@ -32,8 +35,10 @@ collections:
               - { label: "Tagline", name: "tagline", widget: "string" }
               - { label: "Descripción", name: "description", widget: "text" }
 
+          # CLIENTS TITLE
           - { label: "Título clientes", name: "clients_title", widget: "string" }
 
+          # CLIENTS (list)
           - label: "Clientes"
             name: "clients"
             widget: "list"
@@ -41,19 +46,21 @@ collections:
               - { label: "Nombre", name: "name", widget: "string" }
               - { label: "Ubicación", name: "location", widget: "string" }
 
+          # CARDS (object)
           - label: "Tarjetas"
             name: "cards"
             widget: "object"
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Introducción", name: "intro", widget: "text" }
-              - name: "items"
-                label: "Elementos"
+              - label: "Items"
+                name: "items"
                 widget: "list"
                 fields:
                   - { label: "Título", name: "title", widget: "string" }
                   - { label: "Texto", name: "text", widget: "text" }
 
+          # ABOUT
           - label: "Sobre EMSEI"
             name: "about"
             widget: "object"
@@ -62,6 +69,7 @@ collections:
               - { label: "Visión", name: "vision", widget: "text" }
               - { label: "Valores", name: "values", widget: "text" }
 
+          # CONTACT
           - label: "Contacto"
             name: "contact"
             widget: "object"
