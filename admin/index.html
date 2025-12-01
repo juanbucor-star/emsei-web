@@ -7,15 +7,21 @@
 
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.css" />
+  
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 </head>
 <body>
   <div id="nc-root"></div>
   
   <script>
-    // Se ha eliminado el bloque CMS.init() con la configuración en línea.
-    // Al no haber script de inicialización, Netlify CMS buscará automáticamente
-    // el archivo config.yml en este mismo directorio (./admin/config.yml)
-    // e iniciará su aplicación correctamente en #nc-root.
+    // Se ha eliminado la configuración duplicada y en línea CMS.init({ config: {...} }).
+    // El CMS ahora cargará automáticamente el archivo admin/config.yml.
+
+    // Este script asegura que el widget de Identity esté disponible para el CMS.
+    if (typeof netlifyIdentity !== 'undefined' && typeof CMS !== 'undefined') {
+        CMS.init();
+    }
   </script>
 </body>
 </html>
