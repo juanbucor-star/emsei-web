@@ -9,23 +9,64 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "informacion"
-    label: "Información del sitio"
+  - name: "contenido"
+    label: "Contenido del sitio"
     files:
-      - name: "principal"
-        label: "Contenido principal"
+      - name: "informacion"
+        label: "Información general"
         file: "site_data/informacion.json"
         fields:
-          - { label: "Branding - Texto del logo", name: "logo_text", widget: "string" }
-          - { label: "Subtítulo del logo", name: "logo_subtitle", widget: "string", required: false }
-          - { label: "Logo (imagen)", name: "logo_image", widget: "image", required: false }
-          - { label: "Alt del logo", name: "logo_alt", widget: "string", required: false }
-
           - label: "Hero"
             name: "hero"
             widget: "object"
             fields:
               - { label: "Título", name: "title", widget: "string" }
+              - { label: "Subtítulo", name: "subtitle", widget: "string" }
+              - { label: "Texto", name: "text", widget: "text" }
+
+          - label: "Segmentos"
+            name: "segments"
+            widget: "list"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
               - { label: "Descripción", name: "description", widget: "text" }
-              - { label: "Imagen Hero", name: "image", widget: "image" }
-              - { label: "Alt imagen", name: "alt", widget: "string" }
+
+          - { label: "Título clientes", name: "clients_title", widget: "string" }
+
+          - label: "Clientes"
+            name: "clients"
+            widget: "list"
+            fields:
+              - { label: "Nombre", name: "name", widget: "string" }
+              - { label: "Ubicación", name: "location", widget: "string" }
+
+          - label: "Tarjetas"
+            name: "cards"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Introducción", name: "intro", widget: "text" }
+              - name: "items"
+                label: "Elementos"
+                widget: "list"
+                fields:
+                  - { label: "Título", name: "title", widget: "string" }
+                  - { label: "Texto", name: "text", widget: "text" }
+
+          - label: "Sobre EMSEI"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Misión", name: "mission", widget: "text" }
+              - { label: "Visión", name: "vision", widget: "text" }
+              - { label: "Valores", name: "values", widget: "text" }
+
+          - label: "Contacto"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Teléfono principal", name: "phone_main", widget: "string" }
+              - { label: "Teléfono secundario", name: "phone_secondary", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Dirección", name: "address", widget: "string" }
