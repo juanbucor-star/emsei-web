@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: juanbucor-star/emsei-web
+  branch: main
+  auth_type: implicit
+  app_id: Ov23lijkvgKWvnn5TQId
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "contenido"
+    label: "Contenido del sitio"
+    files:
+      - name: "principal"
+        label: "Contenido principal"
+        file: "site_data/informacion.json"
+        format: "json"
+        fields:
+          - label: "Branding"
+            name: "branding"
+            widget: "object"
+            fields:
+              - { label: "Texto del logo", name: "logo_text", widget: "string" }
+              - { label: "Subtítulo del logo", name: "logo_subtitle", widget: "string", required: false }
+              - { label: "Logo (imagen)", name: "logo_image", widget: "image", required: false }
+              - { label: "Alt del logo", name: "logo_alt", widget: "string", required: false }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descripción", name: "description", widget: "string", required: false }
+              - { label: "Imagen de fondo", name: "background", widget: "image", required: false }
+              - { label: "Alt", name: "alt", widget: "string", required: false }
