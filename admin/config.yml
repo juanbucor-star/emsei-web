@@ -3,7 +3,7 @@ backend:
   repo: juanbucor-star/emsei-web
   branch: main
   auth_type: implicit
-  base_url: "https://auth.sveltia.com"
+  base_url: "https://auth.sveltia.co"
   auth_endpoint: "api/auth"
   client_id: Ov23lijkvgKWvnn5TQId
 
