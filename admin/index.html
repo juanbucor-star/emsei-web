@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  </head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin — Grupo EMSEI</title>
 
-  <div id="nc-root"></div>
+  <!-- Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
 
-  <script 
-    src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js">
+  <!-- GitHub OAuth (auth_type implicit) -->
+  <script>
+    window.CMS_MANUAL_INIT = true;
+
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "juanbucor-star/emsei-web",
+          branch: "main",
+          auth_type: "implicit",
+          app_id: "Ov23lijkvgKWvnn5TQId"
+        },
+        media_folder: "images/uploads",
+        public_folder: "/images/uploads"
+      }
+    });
   </script>
-
-  </body>
+</head>
+<body>
+  <h2 style="padding:20px; font-family:Arial;">Cargando Panel Admin…</h2>
+</body>
 </html>
