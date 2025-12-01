@@ -3,8 +3,9 @@ backend:
   repo: juanbucor-star/emsei-web
   branch: main
   auth_type: implicit
-  base_url: "https://TU-WORKER-o-FUNCTION.emsei.com"  # tu proxy OAuth
-  auth_endpoint: "auth"
+  base_url: "https://auth.sveltia.com"
+  auth_endpoint: "api/auth"
+  client_id: Ov23lijkvgKWvnn5TQId
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
@@ -35,3 +36,4 @@ collections:
               - { label: "Descripción", name: "description", widget: "string", required: false }
               - { label: "Imagen de fondo", name: "background", widget: "image", required: false }
               - { label: "Alt", name: "alt", widget: "string", required: false }
+
