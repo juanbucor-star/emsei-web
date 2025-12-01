@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "Cambio de iluminación en country privado",
+    "descripcion": "Reemplazo integral por tecnología LED, mejorando uniformidad y reduciendo consumo.",
+    "detalle": "Incluyó cálculo lumínico, provisión de materiales y montaje.",
+    "imagen": "images/uploads/trabajo-iluminacion-country.jpg"
+  },
+  {
+    "titulo": "Tableros nuevos en nave industrial",
+    "descripcion": "Diseño y montaje de tableros generales y seccionales para ampliación de planta.",
+    "detalle": "Coordinación con producción para minimizar paradas.",
+    "imagen": "images/uploads/trabajo-tableros-industria.jpg"
+  },
+  {
+    "titulo": "Mantenimiento perimetral en barrio cerrado",
+    "descripcion": "Relevamiento, reparación y mejora de sistema de iluminación perimetral.",
+    "detalle": "Incluyó recambio de artefactos y adecuación de circuitos.",
+    "imagen": "images/uploads/trabajo-perimetral-barrio.jpg"
+  }
+]
