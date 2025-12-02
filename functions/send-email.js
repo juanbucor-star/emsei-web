@@ -20,15 +20,24 @@ export async function onRequestPost(context) {
       nombre,
       telefono,
       email,
+      tipoCliente, // <-- AÑADIDO
       servicio,
       urgencia,
       detalle,
       origen,
+      honeypot, // <-- AÑADIDO
       attachments = [],
     } = body;
 
-    // Validación mínima
-    if (!nombre || !telefono || !email || !detalle) {
+    // VALIDACIÓN CRÍTICA: HONEYPOT (Lado del servidor)
+    if (honeypot) {
+        // Bloquear y simular éxito para no alertar al bot.
+        console.warn("Honeypot filled. Blocking spam request.");
+        return jsonOK(); 
+    }
+
+    // Validación mínima (Asegura que los campos principales no estén vacíos)
+    if (!nombre || !telefono || !email || !tipoCliente || !detalle) { // 'tipoCliente' se hace obligatorio
       return jsonError("Faltan campos obligatorios.", 400);
     }
 
@@ -42,14 +51,21 @@ export async function onRequestPost(context) {
 
     // Construcción del HTML del email
     const html = `
-      <h2>Nueva consulta desde la Web</h2>
+      <h2 style="color: #3730A3;">Nueva consulta desde la Web</h2>
+      <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
+      
+      <p style="font-size: 16px; font-weight: 600;">
+        Tipo de Cliente: <span style="color: #3730A3;">${tipoCliente || 'No especificado'}</span>
+      </p>
+      
+      <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+
       <p><strong>Nombre:</strong> ${nombre}</p>
       <p><strong>Teléfono:</strong> ${telefono}</p>
       <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Servicio:</strong> ${servicio || "-"}</p>
-      <p><strong>Urgencia:</strong> ${urgencia || "-"}</p>
-      <p><strong>Detalle:</strong><br>${detalle}</p>
-      <hr>
+      <p><strong>Servicio:</strong> ${servicio}</p>
+      <p><strong>Urgencia:</strong> ${urgencia}</p>
+      <p><strong>Detalle:</strong><br>${detalle.replace(/\n/g, '<br>')}</p>
       <p><strong>Origen:</strong> ${origen || "Web Grupo EMSEI"}</p>
     `;
 
@@ -63,6 +79,7 @@ export async function onRequestPost(context) {
       body: JSON.stringify({
         personalizations: [
           {
+            // Reemplaza con tu email real de recepción
             to: [{ email: "contacto@grupoemsei.com" }], // ← CAMBIAR AL MAIL REAL
           },
         ],
@@ -70,7 +87,7 @@ export async function onRequestPost(context) {
           email: "no-reply@grupoemsei.com",
           name: "Formulario Web EMSEI",
         },
-        subject: `Nueva consulta de ${nombre}`,
+        subject: `[WEB] Nueva consulta de ${nombre} (${tipoCliente})`, // Subject mejorado
         content: [
           {
             type: "text/html",
@@ -104,9 +121,9 @@ function jsonOK() {
   });
 }
 
-function jsonError(msg, status = 400) {
-  return new Response(JSON.stringify({ ok: false, error: msg }), {
-    status,
+function jsonError(message, status = 400) {
+  return new Response(JSON.stringify({ ok: false, error: message }), {
+    status: status,
     headers: { "Content-Type": "application/json" },
   });
 }
