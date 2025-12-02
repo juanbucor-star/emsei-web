@@ -1,807 +1,757 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>EMSEI PRO | Plataforma de Ingeniería Eléctrica de Alta Confiabilidad</title>
+    <title>Grupo EMSEI – Electricistas Profesionales</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Fuente moderna -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto+Mono:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Tailwind CDN para maquetado rápido -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-      /* Configuración base de fuente: Montserrat + Mono para datos técnicos */
-      body {
-        font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
-      }
-      .font-mono {
-          font-family: "Roboto Mono", monospace;
-      }
-
-      /* Definición del color primario (Dorado/Naranja Corporativo) */
-      .text-primary { color: #ffbf00; } 
-      .bg-primary { background-color: #ffbf00; }
-      .border-primary { border-color: #ffbf00; }
-
-      /* Efecto Glassmorphism sutil para el navbar */
-      .glass-navbar {
-        backdrop-filter: blur(10px);
-        background: rgba(17, 24, 39, 0.7); /* Gris oscuro / 70% */
-      }
-
-      /* Estilo para los cards de la "App" */
-      .app-card {
-        @apply rounded-xl border border-slate-800 bg-slate-900 shadow-2xl shadow-gray-950/70;
-      }
-
-      /* Animación de entrada: más rápida para el feel de "App" */
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      .fade-in {
-        animation: fadeIn 0.6s ease-out forwards;
-        opacity: 0; 
-      }
-      
-      /* Estilos para el Carrusel (simulación con flexbox y scroll) */
-      .carousel-container {
-        display: flex;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-      }
-      .carousel-item {
-        flex: 0 0 100%; /* Cada slide ocupa el 100% del contenedor */
-        scroll-snap-align: start;
-        max-width: 100%;
-        margin-right: 1.5rem; /* Espacio entre slides */
-      }
-      /* Ocultar barra de scroll */
-      .carousel-container::-webkit-scrollbar {
-        display: none;
-      }
-      .carousel-container {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
   </head>
-  <body class="bg-gray-950 text-slate-50">
-    
+  <body class="bg-slate-50 text-slate-900">
+    <!-- BARRA SUPERIOR -->
+    <div class="border-b border-slate-200 bg-slate-900 text-xs text-slate-100">
+      <div
+        class="max-w-5xl mx-auto px-4 py-2 flex items-center justify-between gap-3"
+      >
+        <span class="flex items-center gap-2">
+          <svg
+            class="w-4 h-4 text-yellow-400"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
+          </svg>
+          Electricistas matriculados · Instalaciones y mantenimiento
+        </span>
+        <span class="font-semibold text-yellow-300 text-[11px] sm:text-xs">
+          Urgencias y turnos: 351 2035158
+        </span>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
     <header
-      class="sticky top-0 z-40 border-b border-slate-800 glass-navbar"
+      class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur"
     >
       <nav
-        class="max-w-7xl mx-auto px-6 py-4 md:py-4 flex items-center justify-between"
+        class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4 text-sm"
       >
-        <a href="#inicio" class="flex items-center gap-3 group">
+        <div class="flex items-center gap-3">
           <div
-            class="w-9 h-9 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/40 group-hover:shadow-primary/60 transition"
+            class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-blue-700 flex items-center justify-center shadow-md shadow-sky-300/40"
           >
             <svg
-              class="w-5 h-5 text-gray-950"
+              class="w-5 h-5 text-white"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
-              <path
-                d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"
-              />
+              <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
             </svg>
           </div>
           <div class="leading-tight">
-            <div class="text-xl font-extrabold tracking-wider">
-              EMSEI <span class="text-primary text-xs tracking-normal font-normal">PRO</span>
+            <div class="text-sm font-semibold tracking-wide text-slate-900">
+              GRUPO EMSEI
+            </div>
+            <div class="text-[11px] text-slate-500">
+              Electricistas Profesionales
             </div>
           </div>
-        </a>
-        
-        <div class="hidden lg:flex items-center gap-8 text-sm">
-          <a href="#proyectos" class="text-slate-200 hover:text-primary transition font-medium">Portafolio</a>
-          <a href="#soluciones" class="text-slate-200 hover:text-primary transition font-medium">Servicios Críticos</a>
-          <a href="#testimonios" class="text-slate-200 hover:text-primary transition font-medium">Reseñas</a>
-          <a href="#contacto" class="text-slate-200 hover:text-primary transition font-medium">Contacto Rápido</a>
         </div>
-        
-        <a
-          href="https://wa.me/543512035158"
-          target="_blank"
-          class="inline-flex items-center gap-2 text-xs font-bold px-5 py-2 rounded-full bg-primary text-gray-950 hover:bg-yellow-400 transition shadow-lg shadow-primary/30"
+
+        <button
+          class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 text-slate-700"
+          id="btn-menu"
+          type="button"
         >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s-8-4.5-8-11.8a8 8 0 0 1 16 0c0 7.3-8 11.8-8 11.8z" /></svg>
-          SOPORTE
-        </a>
+          <span class="sr-only">Abrir menú</span>
+          <svg
+            class="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <div
+          class="hidden md:flex items-center gap-5 text-[13px]"
+          id="nav-links"
+        >
+          <a href="#inicio" class="nav-link">Inicio</a>
+          <a href="#servicios" class="nav-link">Servicios</a>
+          <a href="#trabajos" class="nav-link">Trabajos</a>
+          <a href="#tarjeta" class="nav-link">Tarjeta QR</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+          <a
+            href="#contacto"
+            class="inline-flex items-center gap-2 rounded-full bg-sky-600 px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm hover:bg-sky-700 transition"
+          >
+            Pedir presupuesto
+          </a>
+        </div>
       </nav>
+
+      <!-- menú móvil -->
+      <div
+        id="mobile-menu"
+        class="md:hidden hidden border-t border-slate-200 bg-white"
+      >
+        <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
+          <a href="#inicio" class="nav-link-mobile">Inicio</a>
+          <a href="#servicios" class="nav-link-mobile">Servicios</a>
+          <a href="#trabajos" class="nav-link-mobile">Trabajos</a>
+          <a href="#tarjeta" class="nav-link-mobile">Tarjeta QR</a>
+          <a href="#contacto" class="nav-link-mobile">Contacto</a>
+        </div>
+      </div>
     </header>
 
-    <section
-      id="inicio"
-      class="relative py-16 md:py-24 border-b-2 border-slate-800/60"
-    >
-      <div
-        class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-8"
-      >
-        <div class="lg:col-span-2 space-y-8">
-            <div class="app-card p-8 md:p-10 fade-in">
-                <div
-                    class="inline-flex items-center gap-3 rounded-full border border-primary/50 bg-slate-800 px-4 py-1.5 text-xs text-primary mb-6 uppercase tracking-wider font-semibold"
-                >
-                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                    PLATAFORMA INTEGRAL DE INGENIERÍA
-                </div>
-
-                <h1
-                    class="text-4xl sm:text-5xl font-extrabold leading-tight text-slate-50"
-                >
-                    Confiabilidad <span class="text-primary">Eléctrica</span> y Máximo Rendimiento
-                </h1>
-
-                <p class="mt-4 text-base text-slate-300 max-w-2xl">
-                    Gestión total de proyectos: desde el diseño normativo de tableros hasta la certificación de Puesta a Tierra y mantenimiento predictivo 24/7 para el sector industrial y comercial.
-                </p>
-                
-                <div class="mt-8 flex flex-wrap gap-4 items-center">
-                    <a
-                      href="#contacto"
-                      class="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-gray-950 hover:bg-yellow-400 transition shadow-lg shadow-primary/30"
-                    >
-                      Cotizar Proyecto Ahora
-                    </a>
-                    <a
-                      href="#soluciones"
-                      class="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-primary transition"
-                    >
-                      Ver Soluciones
-                    </a>
-                </div>
-            </div>
-
-            <div class="grid sm:grid-cols-3 gap-6">
-                <div class="app-card p-6 text-center hover:border-green-500/50 transition fade-in [animation-delay:0.2s]">
-                    <svg class="w-8 h-8 mx-auto mb-3 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8a8 8 0 0 1 16 0c0 7.3-8 11.8-8 11.8z" /></svg>
-                    <div class="text-xl font-bold font-mono text-slate-100">24/7</div>
-                    <div class="text-xs text-slate-400 mt-1">Soporte y Emergencias</div>
-                </div>
-                 <div class="app-card p-6 text-center hover:border-blue-500/50 transition fade-in [animation-delay:0.3s]">
-                    <svg class="w-8 h-8 mx-auto mb-3 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
-                    <div class="text-xl font-bold font-mono text-slate-100">IRAM/AEA</div>
-                    <div class="text-xs text-slate-400 mt-1">Normativa y Certificación</div>
-                </div>
-                <div class="app-card p-6 text-center hover:border-primary/80 transition fade-in [animation-delay:0.4s]">
-                    <svg class="w-8 h-8 mx-auto mb-3 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 19l9 3-9-16-9 16 9-3z" /></svg>
-                    <div class="text-xl font-bold font-mono text-slate-100">0.99 FP</div>
-                    <div class="text-xs text-slate-400 mt-1">Eficiencia Energética</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="lg:col-span-1 space-y-8 fade-in [animation-delay:0.5s]">
-             <div class="app-card p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-sm font-semibold text-slate-300">Monitoreo de Potencia (Sim.)</span>
-                    <span class="text-xs text-slate-500 font-mono">10:45 UTC-3</span>
-                </div>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                        <span class="text-sm text-slate-400">Tensión RMS</span>
-                        <span class="text-lg font-bold font-mono text-primary">380 V</span>
-                    </div>
-                     <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                        <span class="text-sm text-slate-400">Carga Actual</span>
-                        <span class="text-lg font-bold font-mono text-slate-100">145 A</span>
-                    </div>
-                     <div class="flex justify-between items-center">
-                        <span class="text-sm text-slate-400">THD Corriente</span>
-                        <span class="text-lg font-bold font-mono text-red-400">4.1%</span>
-                    </div>
-                </div>
-            </div>
-
-            <a href="#" class="app-card block p-6 hover:border-blue-500/50 transition group">
-                <div class="flex items-center gap-4">
-                    <svg class="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M12 18v-6" /></svg>
-                    <div>
-                        <div class="text-lg font-bold text-slate-100">Documentación Técnica</div>
-                        <div class="text-xs text-slate-400">Planos, Certificados y Manuales de Operación</div>
-                    </div>
-                </div>
-            </a>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="proyectos"
-      class="bg-gray-950 py-20 md:py-24 border-b-2 border-slate-800/60"
-    >
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-10">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-slate-50">
-            Portafolio de Ingeniería en Imágenes
-          </h2>
-          <p class="mt-2 text-base text-slate-400 max-w-3xl">
-            Deslizá para ver algunos de nuestros casos de éxito en campo, tableros y auditorías.
-          </p>
-        </div>
-
-        <div id="project-carousel" class="carousel-container h-80 rounded-2xl app-card p-2">
-          
-          <div class="carousel-item p-4">
-            <div class="h-full w-full rounded-xl overflow-hidden relative">
-              <img
-                src="https://images.pexels.com/photos/4254168/pexels-photo-4254168.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Proyecto 1: Subestación"
-                class="w-full h-full object-cover"
-              />
-              <div class="absolute inset-0 bg-gray-950/40 hover:bg-transparent transition duration-300 flex items-end">
-                  <div class="p-6">
-                      <span class="text-xs text-primary font-semibold tracking-wider bg-gray-950/70 px-3 py-1 rounded-full">SUBESTACIÓN</span>
-                      <h3 class="text-xl font-bold mt-1">Montaje de Cabecera y Distribución MT/BT</h3>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item p-4">
-            <div class="h-full w-full rounded-xl overflow-hidden relative">
-              <img
-                src="https://images.pexels.com/photos/3861438/pexels-photo-3861438.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Proyecto 2: Tableros"
-                class="w-full h-full object-cover"
-              />
-               <div class="absolute inset-0 bg-gray-950/40 hover:bg-transparent transition duration-300 flex items-end">
-                  <div class="p-6">
-                      <span class="text-xs text-primary font-semibold tracking-wider bg-gray-950/70 px-3 py-1 rounded-full">TABLEROS ELÉCTRICOS</span>
-                      <h3 class="text-xl font-bold mt-1">Diseño y Armado de Tableros de Alto Rendimiento</h3>
-                  </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="carousel-item p-4">
-            <div class="h-full w-full rounded-xl overflow-hidden relative">
-              <img
-                src="https://images.pexels.com/photos/4254165/pexels-photo-4254165.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Proyecto 3: Iluminación"
-                class="w-full h-full object-cover object-center"
-              />
-               <div class="absolute inset-0 bg-gray-950/40 hover:bg-transparent transition duration-300 flex items-end">
-                  <div class="p-6">
-                      <span class="text-xs text-primary font-semibold tracking-wider bg-gray-950/70 px-3 py-1 rounded-full">LUMINOTECNIA</span>
-                      <h3 class="text-xl font-bold mt-1">Instalación LED con Análisis Lumínico IES</h3>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-6 flex justify-center text-slate-500 text-sm">
-            <svg class="w-5 h-5 mr-2 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="m5 19 7-7 7 7"/></svg>
-            Deslizar hacia la derecha para ver más
-        </div>
-        
-      </div>
-    </section>
-
-    <section
-      id="testimonios"
-      class="bg-gray-950 py-20 md:py-24 border-b-2 border-slate-800/60"
-    >
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-slate-50">
-            La Confianza de Nuestros Clientes
-          </h2>
-          <div class="flex items-center justify-center mt-3">
-              <div class="flex text-primary text-xl">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <span class="text-xl font-bold ml-2">4.9</span>
-              <span class="text-slate-500 ml-2 text-sm">(+75 Reseñas en Google)</span>
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="app-card p-6 border-slate-700 fade-in">
-                <div class="flex items-center text-primary mb-3">
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p class="text-base text-slate-300 italic">
-                    "Contratamos el servicio de termografía y mantenimiento preventivo. La profesionalidad y el informe detallado superaron las expectativas. Evitamos una parada crítica."
-                </p>
-                <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-3">
-                    <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/32/38bdf8/000000?text=JD" alt="User Avatar">
-                    <div>
-                        <div class="text-sm font-semibold">Julián D.</div>
-                        <div class="text-xs text-slate-500">Encargado de Planta, Industria Química</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="app-card p-6 border-slate-700 fade-in [animation-delay:0.1s]">
-                <div class="flex items-center text-primary mb-3">
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p class="text-base text-slate-300 italic">
-                    "La certificación de PAT fue rápida y nos entregaron la documentación matriculada en el momento. Excelente servicio de habilitación eléctrica."
-                </p>
-                <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-3">
-                    <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/32/facc15/000000?text=AM" alt="User Avatar">
-                    <div>
-                        <div class="text-sm font-semibold">Arq. Martín V.</div>
-                        <div class="text-xs text-slate-500">Desarrolladora Inmobiliaria</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="app-card p-6 border-slate-700 fade-in [animation-delay:0.2s]">
-                <div class="flex items-center text-primary mb-3">
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p class="text-base text-slate-300 italic">
-                    "Solucionaron una falla de corrección de factor de potencia que teníamos hace meses. El diagnóstico fue rápido y la solución, permanente. Gran equipo técnico."
-                </p>
-                <div class="mt-4 pt-4 border-t border-slate-800 flex items-center gap-3">
-                    <img class="w-8 h-8 rounded-full" src="https://via.placeholder.com/32/e11d48/000000?text=LC" alt="User Avatar">
-                    <div>
-                        <div class="text-sm font-semibold">Lic. Carla F.</div>
-                        <div class="text-xs text-slate-500">Administración de Consorcios</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center mt-10">
-            <a href="https://g.page/grupoemsei" target="_blank" class="text-sm font-semibold text-primary hover:text-yellow-400 transition flex items-center justify-center gap-2">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a8 8 0 0 1 8 8c0 5.4-8 12-8 12s-8-6.6-8-12a8 8 0 0 1 8-8zm0 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
-                Ver todas las reseñas en Google Maps
-            </a>
-        </div>
-      </div>
-    </section>
-    
-    <section
-      id="soluciones"
-      class="bg-gray-950 py-20 md:py-24 border-b-2 border-slate-800/60"
-    >
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-slate-50">
-            Nuestros Módulos de Servicio
-          </h2>
-          <p class="mt-2 text-base text-slate-400 max-w-3xl mx-auto">
-            Soluciones estructuradas que garantizan la máxima **seguridad y vida útil** de sus instalaciones.
-          </p>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <article class="app-card p-6 hover:border-primary/80 transition fade-in">
-                <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary border border-primary/50">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
-                </div>
-                <h3 class="text-xl font-bold text-slate-50">Ingeniería & Obra</h3>
-                <p class="mt-2 text-sm text-slate-400">
-                    Diseño, dimensionamiento y montaje de **Tableros, CCMs, y canalizaciones industriales**. Cumplimiento total de plazos.
-                </p>
-                <div class="text-xs font-mono text-primary mt-3">PROYECTO CRÍTICO</div>
-            </article>
-
-            <article class="app-card p-6 hover:border-green-500/50 transition fade-in [animation-delay:0.1s]">
-                <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10 text-green-400 border border-green-500/50">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V6.5A2.5 2.5 0 0 0 17.5 4h-10A2.5 2.5 0 0 0 5 6.5v13z" /><path d="M8 12h8" /><path d="M12 8v8" /></svg>
-                </div>
-                <h3 class="text-xl font-bold text-slate-50">PAT & Habilitaciones</h3>
-                <p class="mt-2 text-sm text-slate-400">
-                    Medición, certificación y matriculación de **Sistemas de Puesta a Tierra (PAT)** y protecciones.
-                </p>
-                 <div class="text-xs font-mono text-green-400 mt-3">CUMPLIMIENTO LEGAL</div>
-            </article>
-
-            <article class="app-card p-6 hover:border-blue-500/50 transition fade-in [animation-delay:0.2s]">
-                <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/50">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17V3" /><path d="M12 17l4-4-4-4" /><path d="M12 17l-4-4 4-4" /><path d="M5 21h14" /></svg>
-                </div>
-                <h3 class="text-xl font-bold text-slate-50">Eficiencia & Ahorro</h3>
-                <p class="mt-2 text-sm text-slate-400">
-                    Auditorías de consumo, corrección de factor de potencia y optimización de **sistemas de iluminación**.
-                </p>
-                 <div class="text-xs font-mono text-blue-400 mt-3">REDUCCIÓN DE COSTOS</div>
-            </article>
-        </div>
-      </div>
-    </section>
-
-
-    <section
-      id="contacto"
-      class="bg-gray-950 py-20 md:py-24"
-    >
-      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-start">
-        
-        <form
-          id="contact-form"
-          class="app-card p-8 md:p-10 space-y-5 fade-in"
+    <main>
+      <!-- HERO -->
+      <section id="inicio" class="border-b border-slate-200 bg-slate-50">
+        <div
+          class="max-w-5xl mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-10 items-center"
         >
-          <h3 class="text-2xl font-bold text-slate-50 mb-4">
-            Consulta Técnica o Pedido de Presupuesto
-          </h3>
-          <div id="form-status" class="hidden text-sm rounded-xl px-4 py-3 mb-4"></div>
-          
-          <div class="grid md:grid-cols-2 gap-5">
-            <div>
-              <label for="nombre" class="block text-slate-300 mb-2 text-sm font-medium">Nombre / Empresa <span class="text-red-400">*</span></label>
-              <input id="nombre" type="text" class="input-style" placeholder="Nombre y Razón Social" />
-              <p id="error-nombre" class="mt-1 text-xs text-red-400 hidden">Ingresá tu nombre o razón social.</p>
+          <div class="space-y-4">
+            <div
+              class="inline-flex items-center gap-2 rounded-full bg-sky-50 border border-sky-100 px-3 py-1 text-[11px] text-sky-700"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"
+              ></span>
+              Electricistas matriculados · Atendemos viviendas, comercios y
+              consorcios
             </div>
-            <div>
-              <label for="telefono" class="block text-slate-300 mb-2 text-sm font-medium">Teléfono (WhatsApp) <span class="text-red-400">*</span></label>
-              <input id="telefono" type="text" class="input-style" placeholder="Cód. Área + Número" />
-              <p id="error-telefono" class="mt-1 text-xs text-red-400 hidden">Ingresá un teléfono válido.</p>
-            </div>
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-5">
-            <div>
-              <label for="servicio" class="block text-slate-300 mb-2 text-sm font-medium">Tipo de Requerimiento <span class="text-red-400">*</span></label>
-              <select id="servicio" class="input-style">
-                <option value="Instalación nueva">Instalación / Obra Civil</option>
-                <option value="Adecuación / ampliación">Adecuación / Ampliación</option>
-                <option value="Mantenimiento">Mantenimiento y Auditoría</option>
-                <option value="Proyecto industrial">Tableros / Proyecto Industrial</option>
-                <option value="Certificación">Certificación de PAT / Habilitación</option>
-                <option value="Otro">Otro</option>
-              </select>
-            </div>
-            <div>
-              <label for="urgencia" class="block text-slate-300 mb-2 text-sm font-medium">Prioridad <span class="text-red-400">*</span></label>
-              <select id="urgencia" class="input-style">
-                <option value="Normal">Normal (Planificación)</option>
-                <option value="Media">Media (Urgente cotización)</option>
-                <option value="Alta">Alta (Emergencia / Falla)</option>
-              </select>
-            </div>
-          </div>
-          
-          <div>
-            <label for="detalle" class="block text-slate-300 mb-2 text-sm font-medium">Detalle del Requerimiento <span class="text-red-400">*</span></label>
-            <textarea id="detalle" rows="5" class="input-style" placeholder="Describa el alcance de la obra o la falla específica. (Mínimo 20 caracteres)"></textarea>
-            <p id="error-detalle" class="mt-1 text-xs text-red-400 hidden">Agregá una descripción clara (mín. 20 caracteres).</p>
-          </div>
-          
-          <button
-            id="btn-enviar"
-            type="submit"
-            class="w-full rounded-xl bg-primary py-3.5 text-base font-bold text-gray-950 hover:bg-yellow-400 transition flex items-center justify-center gap-3 shadow-lg shadow-primary/30"
-          >
-            <span id="btn-texto">Enviar Solicitud</span>
-            <span
-              id="btn-spinner"
-              class="hidden w-5 h-5 border-3 border-gray-950 border-t-transparent rounded-full animate-spin"
-            ></span>
-          </button>
-        </form>
-        
-        <div class="space-y-6 fade-in [animation-delay:0.2s]">
-             <h3 class="text-2xl font-bold text-slate-50 mb-4">
-                Contacto Directo
-            </h3>
-            <p class="text-base text-slate-400 mb-8 max-w-xl">
-                Para emergencias o consultas directas, utilice nuestros canales prioritarios.
+
+            <h1
+              class="text-3xl md:text-4xl font-semibold leading-tight text-slate-900"
+            >
+              Luminarias y tableros seguros
+              <span class="text-sky-700 block mt-1">
+                para tu casa, negocio o edificio
+              </span>
+            </h1>
+
+            <p class="text-sm text-slate-600 max-w-md">
+              Instalaciones nuevas, recambios a LED, revisión de tableros,
+              disyuntores y puestas a tierra. Todo explicado en lenguaje claro,
+              sin tecnicismos.
             </p>
 
-            <div class="app-card flex items-center gap-5 p-5 hover:border-green-500/50 transition">
-              <span class="w-12 h-12 rounded-full bg-green-500/10 border border-green-500/50 flex items-center justify-center text-green-400">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s-8-4.5-8-11.8a8 8 0 0 1 16 0c0 7.3-8 11.8-8 11.8z" /></svg>
-              </span>
-              <div>
-                <div class="text-xs text-slate-400 uppercase tracking-widest">Soporte Operativo (24/7)</div>
-                <a href="https://wa.me/543512035158" target="_blank" class="text-xl text-slate-100 font-bold hover:text-green-400 transition font-mono">
-                  +54 9 351 2035158
-                </a>
-              </div>
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href="#contacto"
+                class="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-sky-200 hover:bg-sky-700 transition"
+              >
+                Pedir visita / presupuesto
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <button
+                type="button"
+                class="inline-flex items-center gap-2 text-[11px] text-slate-600 hover:text-sky-700"
+                onclick="scrollToId('servicios')"
+              >
+                Ver servicios
+                <span class="w-6 h-[1px] bg-slate-300"></span>
+              </button>
             </div>
 
-            <div class="app-card flex items-center gap-5 p-5 hover:border-sky-500/50 transition">
-              <span class="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/50 flex items-center justify-center text-sky-400">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><path d="m22 6-10 7L2 6" /></svg>
-              </span>
+            <div
+              class="grid grid-cols-3 gap-4 pt-4 text-[11px] text-slate-600 max-w-md"
+            >
               <div>
-                <div class="text-xs text-slate-400 uppercase tracking-widest">Contacto Comercial</div>
-                <a href="mailto:contacto@grupoemsei.com" class="text-xl text-slate-100 font-bold hover:text-sky-400 transition">
-                  contacto@grupoemsei.com
-                </a>
+                <div class="text-sky-700 font-semibold text-sm">+10 años</div>
+                <div>Experiencia en instalaciones domiciliarias y comercios</div>
+              </div>
+              <div>
+                <div class="text-sky-700 font-semibold text-sm">LED</div>
+                <div>Reemplazo de iluminación tradicional por LED</div>
+              </div>
+              <div>
+                <div class="text-sky-700 font-semibold text-sm">Normas</div>
+                <div>Tableros con disyuntor y térmicas según normativa</div>
               </div>
             </div>
-            
-            <div class="app-card p-5">
-                <h3 class="text-sm font-semibold text-primary mb-2">Descarga Rápida:</h3>
-                <p class="text-xs text-slate-500">
-                    Escanee el código QR para guardar nuestro contacto directo y acceder al portfolio digital.
-                </p>
-                <div class="mt-4 flex justify-center">
-                    <img
-                        src="https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=https%3A%2F%2Fwa.me%2F543512035158"
-                        alt="QR contacto WhatsApp Grupo EMSEI"
-                        class="w-24 h-24 rounded-lg border-2 border-slate-700 bg-white"
-                    />
+          </div>
+
+          <div>
+            <div
+              class="rounded-2xl bg-white border border-slate-200 shadow-md overflow-hidden"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.pexels.com/photos/4254168/pexels-photo-4254168.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Electricista instalando luminarias LED"
+                  class="w-full h-52 object-cover"
+                />
+                <div
+                  class="absolute bottom-3 left-3 rounded-lg bg-slate-900/80 text-xs text-slate-50 px-3 py-1.5"
+                >
+                  Electricista instalando luminarias LED en vivienda
                 </div>
-            </div>
-        </div>
-      </div>
-
-      <div
-        id="modal-exito"
-        class="fixed inset-0 bg-gray-950/90 flex items-center justify-center z-50 hidden text-sm backdrop-blur-sm transition-opacity duration-300"
-      >
-        <div class="rounded-2xl border border-slate-700 bg-slate-900 px-8 py-8 max-w-md w-full text-slate-100 shadow-2xl space-y-5">
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-full bg-emerald-400/10 border border-emerald-400/50 flex items-center justify-center text-emerald-300">
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-            </div>
-            <div class="leading-tight">
-              <div class="font-bold text-xl">Solicitud Recibida</div>
-              <div class="text-slate-400 text-sm">Procesando en la plataforma EMSEI PRO.</div>
+              </div>
+              <div class="p-4 space-y-3 text-xs">
+                <div class="flex items-center justify-between gap-3">
+                  <span class="text-slate-600">Estado de la instalación</span>
+                  <span
+                    class="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-emerald-500"
+                    ></span>
+                    Sin fallas visibles
+                  </span>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                  <div
+                    class="rounded-lg border border-slate-200 bg-slate-50 p-2"
+                  >
+                    <div class="text-[10px] text-slate-500">Vivienda</div>
+                    <div class="text-sm font-semibold text-slate-800">
+                      Monofásica
+                    </div>
+                  </div>
+                  <div
+                    class="rounded-lg border border-slate-200 bg-slate-50 p-2"
+                  >
+                    <div class="text-[10px] text-slate-500">Luminarias</div>
+                    <div class="text-sm font-semibold text-slate-800">
+                      LED 9W
+                    </div>
+                  </div>
+                  <div
+                    class="rounded-lg border border-slate-200 bg-slate-50 p-2"
+                  >
+                    <div class="text-[10px] text-slate-500">Protecciones</div>
+                    <div class="text-sm font-semibold text-slate-800">
+                      Disyuntor + térmicas
+                    </div>
+                  </div>
+                </div>
+                <p class="text-[11px] text-slate-600">
+                  Revisamos el tablero, el cableado visible y el funcionamiento
+                  general antes de hacer cualquier cambio.
+                </p>
+              </div>
             </div>
           </div>
-          <p class="text-slate-300">
-            Su requerimiento ha sido ingresado. Recibirá una comunicación por WhatsApp o correo en breve.
-          </p>
-          <div class="flex flex-col gap-3">
-            <a
-              href="https://wa.me/543512035158"
-              target="_blank"
-              class="w-full rounded-xl bg-green-500 py-3.5 text-base font-bold text-gray-950 hover:bg-green-400 text-center transition"
+        </div>
+      </section>
+
+      <!-- SERVICIOS -->
+      <section
+        id="servicios"
+        class="border-b border-slate-200 bg-white py-12 md:py-16"
+      >
+        <div class="max-w-5xl mx-auto px-4 space-y-8">
+          <header class="space-y-2 max-w-xl">
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">
+              Servicios eléctricos para tu casa, comercio o edificio
+            </h2>
+            <p class="text-sm text-slate-600">
+              Nos especializamos en trabajos claros y bien terminados, pensando
+              en la seguridad de las personas que usan los espacios todos los
+              días.
+            </p>
+          </header>
+
+          <div class="grid md:grid-cols-3 gap-6 text-xs">
+            <article class="servicio-card">
+              <div class="servicio-icono bg-sky-50 text-sky-700">
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 12h18" />
+                  <path d="M12 3v18" />
+                </svg>
+              </div>
+              <h3 class="servicio-titulo">Instalaciones y recableados</h3>
+              <p class="servicio-texto">
+                Nuevas líneas, puntos de toma y luz, recableado de ambientes y
+                ampliaciones. Todo prolijo, embutido o a la vista según lo que
+                necesites.
+              </p>
+              <ul class="servicio-lista">
+                <li>• Ampliaciones de vivienda</li>
+                <li>• Cambios de tablero antiguo</li>
+                <li>• Revisión general de instalación</li>
+              </ul>
+            </article>
+
+            <article class="servicio-card">
+              <div class="servicio-icono bg-amber-50 text-amber-700">
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 3v18" />
+                  <path d="M5 8h14" />
+                  <path d="M5 16h14" />
+                </svg>
+              </div>
+              <h3 class="servicio-titulo">
+                Cambio a luminarias LED y mejoras
+              </h3>
+              <p class="servicio-texto">
+                Reemplazo de lámparas y artefactos por LED, mejora de
+                iluminación en ambientes, locales y frentes de casas o
+                edificios.
+              </p>
+              <ul class="servicio-lista">
+                <li>• Cocinas, livings y dormitorios</li>
+                <li>• Frentes, patios y cocheras</li>
+                <li>• Comercios y oficinas</li>
+              </ul>
+            </article>
+
+            <article class="servicio-card">
+              <div class="servicio-icono bg-emerald-50 text-emerald-700">
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 12l9-9 9 9" />
+                  <path d="M5 10v10h14V10" />
+                </svg>
+              </div>
+              <h3 class="servicio-titulo">
+                Tableros, disyuntores y seguridad
+              </h3>
+              <p class="servicio-texto">
+                Armado y ordenamiento de tableros, instalación de disyuntores y
+                térmicas, puesta a tierra y protecciones básicas.
+              </p>
+              <ul class="servicio-lista">
+                <li>• Tableros para casas y PH</li>
+                <li>• Tableros de consorcio</li>
+                <li>• Puesta a tierra y jabalinas</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRABAJOS -->
+      <section
+        id="trabajos"
+        class="border-b border-slate-200 bg-slate-50 py-12 md:py-16"
+      >
+        <div class="max-w-5xl mx-auto px-4 space-y-8">
+          <header class="space-y-2 max-w-xl">
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">
+              Algunos trabajos que solemos hacer
+            </h2>
+            <p class="text-sm text-slate-600">
+              No mostramos grandes industrias, sino trabajos reales de
+              electricistas: casas, departamentos, comercios y consorcios.
+            </p>
+          </header>
+
+          <div class="grid md:grid-cols-3 gap-6 text-xs">
+            <article class="trabajo-card">
+              <img
+                src="https://images.pexels.com/photos/4254160/pexels-photo-4254160.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Cambio de luminarias en living"
+                class="trabajo-img"
+              />
+              <div class="trabajo-body">
+                <h3 class="trabajo-titulo">
+                  Cambio de luminarias en living y cocina
+                </h3>
+                <p class="trabajo-texto">
+                  Reemplazo completo a LED, nuevos artefactos y revisión del
+                  tablero para soportar la carga sin problemas.
+                </p>
+              </div>
+            </article>
+
+            <article class="trabajo-card">
+              <img
+                src="https://images.pexels.com/photos/3861436/pexels-photo-3861436.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Tablero domiciliario ordenado"
+                class="trabajo-img"
+              />
+              <div class="trabajo-body">
+                <h3 class="trabajo-titulo">Reordenamiento de tablero</h3>
+                <p class="trabajo-texto">
+                  Etiquetamos los circuitos, agregamos disyuntor y térmicas
+                  diferenciadas, dejando todo prolijo y accesible.
+                </p>
+              </div>
+            </article>
+
+            <article class="trabajo-card">
+              <img
+                src="https://images.pexels.com/photos/4254165/pexels-photo-4254165.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Iluminación de frente y cochera"
+                class="trabajo-img"
+              />
+              <div class="trabajo-body">
+                <h3 class="trabajo-titulo">
+                  Iluminación de frente, patio y cochera
+                </h3>
+                <p class="trabajo-texto">
+                  Colocación de artefactos exteriores, sensores de movimiento y
+                  fotocélulas para encendido automático.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- TARJETA / QR -->
+      <section
+        id="tarjeta"
+        class="border-b border-slate-200 bg-white py-12 md:py-16"
+      >
+        <div
+          class="max-w-5xl mx-auto px-4 grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-center"
+        >
+          <div class="space-y-3 text-sm">
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">
+              Tarjeta digital con código QR
+            </h2>
+            <p class="text-slate-600 text-[13px]">
+              Podés tener una tarjeta con QR para pegar en el tablero, en la
+              puerta del local o en la carpeta del consorcio. La escanean y se
+              abre directamente tu WhatsApp.
+            </p>
+            <ul class="text-[13px] text-slate-600 space-y-1">
+              <li>• Ideal para administradores de edificios y consorcios.</li>
+              <li>• También para clientes habituales, countries y comercios.</li>
+              <li>
+                • Con mensaje predefinido para que te lleguen consultas claras.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="rounded-2xl border border-slate-200 bg-slate-50 p-5 flex flex-col md:flex-row items-center gap-4 shadow-sm"
+          >
+            <div
+              class="w-28 h-28 rounded-2xl bg-white flex items-center justify-center overflow-hidden border border-slate-200"
             >
-              Contactar por WhatsApp
-            </a>
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=Whatsapp%20Grupo%20EMSEI"
+                alt="QR contacto WhatsApp Grupo EMSEI"
+                class="w-24 h-24 object-contain"
+              />
+            </div>
+            <div class="flex-1 text-xs space-y-1">
+              <div
+                class="inline-flex items-center gap-2 text-[11px] text-slate-500 uppercase tracking-wide"
+              >
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-emerald-500"
+                ></span>
+                Tarjeta de contacto
+              </div>
+              <div class="text-sm font-semibold text-slate-900">
+                Grupo EMSEI – Electricistas Profesionales
+              </div>
+              <div class="text-slate-700">351 2035158</div>
+              <div class="text-slate-500 text-[11px]">
+                “Hola, te escribo desde el QR de la tarjeta de Grupo EMSEI…”
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section
+        id="contacto"
+        class="bg-slate-50 py-12 md:py-16 border-b border-slate-200"
+      >
+        <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-10">
+          <div class="space-y-4 text-sm">
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">
+              Contanos qué necesitás
+            </h2>
+            <p class="text-slate-600 text-[13px]">
+              Podés usar este formulario para contar brevemente tu situación. Te
+              respondemos por WhatsApp o por correo según lo que completes.
+            </p>
+
+            <div class="space-y-3 text-[13px] text-slate-700">
+              <div class="flex items-center gap-3">
+                <span
+                  class="w-8 h-8 rounded-xl bg-green-50 border border-green-200 flex items-center justify-center text-green-600"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .09 3.39 2 2 0 0 1 2.05 1h3a2 2 0 0 1 2 1.72 12.4 12.4 0 0 0 .7 2.73 2 2 0 0 1-.45 2.11L6.1 9.76a16 16 0 0 0 8.14 8.14l2.2-1.19a2 2 0 0 1 2.11.16 12.4 12.4 0 0 0 2.73.7A2 2 0 0 1 22 16.92Z"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <div class="text-slate-500">WhatsApp</div>
+                  <div class="font-medium text-slate-900">
+                    351 2035158 (Grupo EMSEI)
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <span
+                  class="w-8 h-8 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-600"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M4 4h16v16H4z" />
+                    <path d="M22 7l-10 8L2 7" />
+                  </svg>
+                </span>
+                <div>
+                  <div class="text-slate-500">Correo</div>
+                  <div class="font-medium text-slate-900">
+                    contacto@grupoemsei.com
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-[11px] text-slate-500">
+              Si ya tenés fotos del tablero, luminarias o ambientes, podés
+              enviarlas cuando te respondamos por WhatsApp o correo.
+            </p>
+          </div>
+
+          <!-- FORMULARIO -->
+          <form
+            id="contact-form"
+            class="rounded-2xl border border-slate-200 bg-white p-5 space-y-4 shadow-sm text-xs"
+          >
+            <div
+              id="form-status"
+              class="hidden text-[11px] rounded-md px-3 py-2 mb-1"
+            ></div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+              <div>
+                <label for="nombre" class="label">Nombre</label>
+                <input
+                  id="nombre"
+                  type="text"
+                  class="input"
+                  placeholder="Nombre y apellido"
+                />
+                <p id="error-nombre" class="error-msg hidden">
+                  Ingresá tu nombre.
+                </p>
+              </div>
+              <div>
+                <label for="telefono" class="label">Teléfono / WhatsApp</label>
+                <input
+                  id="telefono"
+                  type="text"
+                  class="input"
+                  placeholder="Celular con código de área"
+                />
+                <p id="error-telefono" class="error-msg hidden">
+                  Ingresá un teléfono válido.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="label">Correo (opcional)</label>
+              <input
+                id="email"
+                type="email"
+                class="input"
+                placeholder="tu-correo@ejemplo.com"
+              />
+              <p id="error-email" class="error-msg hidden">
+                Ingresá un correo válido o dejalo vacío.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+              <div>
+                <label for="servicio" class="label">Tipo de trabajo</label>
+                <select id="servicio" class="input">
+                  <option value="Instalación nueva">Instalación nueva</option>
+                  <option value="Revisión / mantenimiento">
+                    Revisión / mantenimiento
+                  </option>
+                  <option value="Cambio a LED">Cambio a LED</option>
+                  <option value="Tablero / disyuntor">
+                    Tablero / disyuntor
+                  </option>
+                  <option value="Otro">Otro (detallar)</option>
+                </select>
+              </div>
+              <div>
+                <label for="urgencia" class="label">Urgencia</label>
+                <select id="urgencia" class="input">
+                  <option value="Normal">Normal</option>
+                  <option value="Media">Media</option>
+                  <option value="Alta">Alta (corte, chispas, olor, etc.)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="detalle" class="label">Contanos un poco más</label>
+              <textarea
+                id="detalle"
+                rows="3"
+                class="input"
+                placeholder="Ej: Quiero cambiar todas las lámparas del living, cocina y pasillo a LED. El tablero es antiguo..."
+              ></textarea>
+              <p id="error-detalle" class="error-msg hidden">
+                Agregá al menos una breve descripción.
+              </p>
+            </div>
+
             <button
-              type="button"
-              onclick="cerrarModalExito()"
-              class="w-full rounded-xl border border-slate-700 py-3 text-sm text-slate-200 hover:bg-slate-800 transition"
+              id="btn-enviar"
+              type="submit"
+              class="w-full rounded-lg bg-sky-600 py-2.5 text-xs font-semibold text-white hover:bg-sky-700 transition flex items-center justify-center gap-2"
             >
-              Cerrar
+              <span id="btn-texto">Enviar consulta</span>
+              <span
+                id="btn-spinner"
+                class="hidden w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"
+              ></span>
             </button>
+          </form>
+        </div>
+
+        <!-- MODAL ÉXITO -->
+        <div
+          id="modal-exito"
+          class="fixed inset-0 bg-slate-900/40 flex items-center justify-center z-50 hidden text-xs px-4"
+        >
+          <div
+            class="max-w-sm w-full rounded-2xl bg-white border border-slate-200 shadow-lg p-6 space-y-3"
+          >
+            <div class="flex items-center gap-3">
+              <div
+                class="w-8 h-8 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600"
+              >
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-[13px] text-slate-900">
+                  Tu consulta fue enviada
+                </div>
+                <div class="text-slate-600 text-[11px]">
+                  Te vamos a responder a la brevedad.
+                </div>
+              </div>
+            </div>
+
+            <p class="text-[12px] text-slate-700">
+              Si preferís, también podés escribirnos directamente por WhatsApp
+              usando el botón de abajo.
+            </p>
+
+            <div class="flex flex-col gap-2">
+              <a
+                href="https://wa.me/543512035158?text=Hola%2C%20vengo%20de%20la%20web%20de%20Grupo%20EMSEI%20y%20quiero%20hacer%20una%20consulta%20el%C3%A9ctrica."
+                target="_blank"
+                class="w-full rounded-lg bg-emerald-500 py-2 text-[11px] font-semibold text-white hover:bg-emerald-600 text-center"
+              >
+                Escribir por WhatsApp
+              </a>
+              <button
+                type="button"
+                onclick="cerrarModalExito()"
+                class="w-full rounded-lg border border-slate-200 py-2 text-[11px] text-slate-700 hover:bg-slate-50"
+              >
+                Cerrar
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <footer class="border-t border-slate-800 bg-gray-950 py-8 text-xs">
+    <!-- FOOTER -->
+    <footer class="bg-white py-5 text-[11px] border-t border-slate-200">
       <div
-        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-slate-500"
+        class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2 text-slate-500"
       >
-        <div class="text-center md:text-left">
-            EMSEI PRO System © <span id="year"></span>. Todos los derechos reservados.
-            <span class="mx-2 text-slate-700 hidden sm:inline-block">|</span>
-            <a href="#contacto" class="hover:text-primary transition font-medium">Términos de Servicio</a>
+        <div>
+          © <span id="year"></span> Grupo EMSEI. Electricistas Profesionales.
         </div>
-        <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 text-xs sm:text-sm">
-          <span class="font-semibold text-slate-300">Ingeniería Matriculada:</span>
-          <span class="font-bold text-primary">IRAM / AEA Certificado</span>
-        </div>
+        <div>Instalaciones · Mantenimiento · Luminarias LED</div>
       </div>
     </footer>
+  </body>
+</html>
 
-    <script>
-      // 1. Año dinámico y Scroll Suave
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          const targetId = this.getAttribute("href");
-          if (!targetId || targetId === "#") return;
-          const el = document.querySelector(targetId);
-          if (!el) return;
-          e.preventDefault();
-          // Ajuste de 80px para compensar la altura del navbar sticky
-          window.scrollTo({
-            top: el.offsetTop - 80,
-            behavior: "smooth",
-          });
-        });
-      });
-      
-      // 2. Lógica de Formulario
-      // NOTA: Reemplazar con la URL de tu Cloudflare Worker o Endpoint de Contacto
-      const API_URL = "https://emsei-contacto.example.workers.dev/contact"; 
-
-      const form = document.getElementById("contact-form");
-      const btnEnviar = document.getElementById("btn-enviar");
-      const btnTexto = document.getElementById("btn-texto");
-      const btnSpinner = document.getElementById("btn-spinner");
-      const formStatus = document.getElementById("form-status");
-
-      const nombreEl = document.getElementById("nombre");
-      const telEl = document.getElementById("telefono");
-      const servicioEl = document.getElementById("servicio");
-      const urgenciaEl = document.getElementById("urgencia");
-      const detalleEl = document.getElementById("detalle");
-
-      const errorNombre = document.getElementById("error-nombre");
-      const errorTel = document.getElementById("error-telefono");
-      const errorDetalle = document.getElementById("error-detalle");
-
-      // Función de utilidad para manejar errores visuales
-      function setError(input, msgEl, hasError) {
-        if (!input || !msgEl) return;
-        if (hasError) {
-          input.classList.add("border-red-500");
-          input.classList.remove("focus:border-primary");
-          msgEl.classList.remove("hidden");
-        } else {
-          input.classList.remove("border-red-500");
-          input.classList.add("focus:border-primary");
-          msgEl.classList.add("hidden");
-        }
-      }
-
-      function validarFormulario() {
-        let ok = true;
-        const nombre = nombreEl.value.trim();
-        const tel = telEl.value.trim();
-        const detalle = detalleEl.value.trim();
-
-        // Validación Nombre: Mínimo 3 caracteres
-        setError(nombreEl, errorNombre, !nombre || nombre.length < 3);
-        if (!nombre || nombre.length < 3) ok = false;
-
-        // Validación Teléfono: Mínimo 8 caracteres
-        setError(telEl, errorTel, tel.length < 8);
-        if (tel.length < 8) ok = false;
-
-        // Validación Detalle: Mínimo 20 caracteres
-        setError(detalleEl, errorDetalle, detalle.length < 20);
-        if (detalle.length < 20) ok = false;
-
-        return ok;
-      }
-
-      function setFormLoading(isLoading) {
-        if (!btnEnviar) return;
-        btnEnviar.disabled = isLoading;
-        if (btnTexto && btnSpinner) {
-          btnTexto.textContent = isLoading ? "Enviando Solicitud..." : "Enviar Solicitud";
-          btnSpinner.classList.toggle("hidden", !isLoading);
-          // Estilo de carga
-          btnEnviar.classList.toggle("bg-primary", !isLoading);
-          btnEnviar.classList.toggle("bg-gray-600", isLoading);
-          btnEnviar.classList.toggle("hover:bg-yellow-400", !isLoading);
-        }
-      }
-
-      function mostrarStatus(tipo, mensaje) {
-        if (!formStatus) return;
-        formStatus.classList.remove("hidden");
-        formStatus.textContent = mensaje;
-        
-        formStatus.className = "text-sm rounded-xl px-4 py-3 mb-4 font-medium transition"; 
-        
-        if (tipo === "error") {
-          formStatus.classList.add("bg-red-900/40", "border", "border-red-500/40", "text-red-200");
-        } else {
-          formStatus.classList.add("bg-sky-900/40", "border", "border-sky-500/40", "text-sky-200");
-        }
-      }
-
-      function abrirModalExito() {
-        const modal = document.getElementById("modal-exito");
-        if (modal) modal.classList.remove("hidden");
-      }
-
-      function cerrarModalExito() {
-        const modal = document.getElementById("modal-exito");
-        if (modal) modal.classList.add("hidden");
-      }
-      window.cerrarModalExito = cerrarModalExito;
-
-      if (form) {
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          if (!validarFormulario()) {
-            mostrarStatus("error", "Error: Revisá los campos marcados. Deben estar completos y ser válidos.");
-            return;
-          }
-          if (!API_URL || !API_URL.startsWith("http")) {
-            mostrarStatus("error", "Error de configuración: La URL de la API no es válida. (Solo simulación)");
-            // En entorno de producción, esto debería ser un return
-            // Para el ejemplo, simulamos éxito y salimos
-            form.reset();
-            document.querySelectorAll('[id^="error-"]').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.input-style').forEach(el => el.classList.remove('border-red-500'));
-            abrirModalExito();
-            return; 
-          }
-
-          const payload = {
-            nombre: nombreEl.value.trim(),
-            telefono: telEl.value.trim(),
-            servicio: servicioEl.value.trim(),
-            urgencia: urgenciaEl.value.trim(),
-            detalle: detalleEl.value.trim(),
-            origen: "Web EMSEI PRO - Solicitud App",
-          };
-
-          try {
-            setFormLoading(true);
-            mostrarStatus("ok", "Conectando con el servidor. Enviando tu solicitud...");
-            
-            const res = await fetch(API_URL, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-              signal: AbortSignal.timeout(10000) 
-            });
-            
-            if (!res.ok) throw new Error(`Error en la conexión del servidor: ${res.status}`);
-            
-            mostrarStatus("ok", "¡Solicitud enviada! Recibirás una respuesta a la brevedad.");
-            form.reset();
-            document.querySelectorAll('[id^="error-"]').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.input-style').forEach(el => el.classList.remove('border-red-500'));
-            
-            abrirModalExito();
-
-          } catch (err) {
-            console.error("Error de envío:", err);
-            let errMsg = "Hubo un problema al enviar la consulta. Probá de nuevo o contactanos por WhatsApp.";
-            if (err.name === 'TimeoutError') {
-                errMsg = "Tiempo de espera agotado. Probá de nuevo o usá el teléfono de soporte."
-            }
-            mostrarStatus("error", errMsg);
-
-          } finally {
-            setFormLoading(false);
-          }
-        });
-      }
-      
-      // 3. Inicialización de animaciones de aparición (fade-in)
-      document.addEventListener('DOMContentLoaded', () => {
-          const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                      entry.target.classList.add('animate');
-                      // Detiene la observación una vez que se ha animado
-                      observer.unobserve(entry.target); 
-                  }
-              });
-          }, { threshold: 0.1 }); 
-
-          document.querySelectorAll('.fade-in').forEach(element => {
-              observer.observe(element);
-          });
-      });
-      
-      // 4. Lógica de navegación del carrusel (Solo demostrativo)
-      // Agrega un listener para el scroll horizontal en el contenedor.
       // (En una app real se usaría una librería de slider dedicada)
     </script>
   </body>
