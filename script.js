@@ -1,229 +1,203 @@
-// script.js — Grupo EMSEI
-// Carga de contenido dinámico desde archivos JSON en /site_data
+// ================================
+// Grupo EMSEI – Frontend lógica
+// ================================
 
-const DATA_BASE_PATH = './site_data';
+const API_URL = "https://contact.juanbucor.workers.dev/contact";
 
-async function loadJSON(fileName) {
-  const url = `${DATA_BASE_PATH}/${fileName}`;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error(`No se pudo cargar ${url} (status ${res.status})`);
-      return null;
-    }
-    return await res.json();
-  } catch (err) {
-    console.error(`Error al cargar ${url}`, err);
-    return null;
-  }
-}
-
-function setText(id, value) {
+// Scroll suave
+function scrollToId(id) {
   const el = document.getElementById(id);
-  if (el && typeof value === 'string' && value.trim() !== '') {
-    el.textContent = value;
-  }
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: "smooth" });
 }
+window.scrollToId = scrollToId;
 
-function setHref(id, href) {
-  const el = document.getElementById(id);
-  if (el && typeof href === 'string' && href.trim() !== '') {
-    el.setAttribute('href', href);
-  }
-}
+// Toggle menú móvil
+const btnMenu = document.getElementById("btn-menu");
+const mobileMenu = document.getElementById("mobile-menu");
+if (btnMenu && mobileMenu) {
+  btnMenu.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
 
-async function loadBranding() {
-  const data = await loadJSON('branding.json');
-  if (!data) return;
-
-  setText('branding-logo-text', data.logo_text || 'Grupo EMSEI');
-  setText('branding-logo-subtitle', data.logo_subtitle || 'Soluciones Eléctricas Integrales');
-  setText('branding-tagline', data.tagline || '');
-  setText('footer-branding-title', data.logo_text || 'Grupo EMSEI');
-  setText('footer-branding-text', data.footer_text || '');
-}
-
-async function loadHero() {
-  const data = await loadJSON('hero.json');
-  if (!data) return;
-
-  setText('hero-title', data.title || '');
-  setText('hero-subtitle', data.subtitle || '');
-  setText('hero-badge', data.badge || '');
-
-  if (data.cta_text) {
-    setText('hero-cta', data.cta_text);
-  }
-  if (data.cta_link) {
-    setHref('hero-cta', data.cta_link);
-  }
-
-  if (data.background_image) {
-    const hero = document.getElementById('hero');
-    if (hero) {
-      hero.style.backgroundImage = `url('${data.background_image}')`;
-      hero.style.backgroundSize = 'cover';
-      hero.style.backgroundPosition = 'center';
-    }
-  }
-}
-
-async function loadServicios() {
-  const container = document.getElementById('services-list');
-  if (!container) return;
-
-  const data = await loadJSON('servicios.json');
-  if (!Array.isArray(data)) return;
-
-  container.innerHTML = '';
-
-  data.forEach((servicio) => {
-    const card = document.createElement('article');
-    card.className = 'card';
-
-    const tag = servicio.tipo ? `<div class="card-tag">${servicio.tipo}</div>` : '';
-    const img = servicio.imagen
-      ? `<div class="card-image"><img src="${servicio.imagen}" alt="${servicio.titulo || ''}"></div>`
-      : '';
-
-    card.innerHTML = `
-      ${tag}
-      <h3 class="card-title">${servicio.titulo || ''}</h3>
-      <p class="card-text">${servicio.descripcion || ''}</p>
-      ${img}
-      <div class="card-meta">${servicio.detalle || ''}</div>
-    `;
-
-    container.appendChild(card);
+  mobileMenu.querySelectorAll("a[href^='#']").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
   });
 }
 
-async function loadClientes() {
-  const container = document.getElementById('clients-list');
-  if (!container) return;
+// Año en footer
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  const data = await loadJSON('clientes.json');
-  if (!Array.isArray(data)) return;
+// Formulario
+const form = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
+const btnEnviar = document.getElementById("btn-enviar");
+const btnTexto = document.getElementById("btn-texto");
+const btnSpinner = document.getElementById("btn-spinner");
 
-  container.innerHTML = '';
+const nombreEl = document.getElementById("nombre");
+const telEl = document.getElementById("telefono");
+const emailEl = document.getElementById("email");
+const servicioEl = document.getElementById("servicio");
+const urgenciaEl = document.getElementById("urgencia");
+const detalleEl = document.getElementById("detalle");
 
-  data.forEach((cliente) => {
-    const card = document.createElement('article');
-    card.className = 'client-card';
+const errorNombre = document.getElementById("error-nombre");
+const errorTel = document.getElementById("error-telefono");
+const errorEmail = document.getElementById("error-email");
+const errorDetalle = document.getElementById("error-detalle");
 
-    const hasLogo = !!cliente.logo;
-    const logoHTML = hasLogo
-      ? `<img src="${cliente.logo}" alt="${cliente.nombre || 'Cliente'}">`
-      : `<span class="client-name">${cliente.nombre || 'Cliente'}</span>`;
-
-    card.innerHTML = `
-      <div class="client-logo-wrapper">
-        ${logoHTML}
-      </div>
-      <div class="client-name">${cliente.nombre || ''}</div>
-      <div class="client-type">${cliente.segmento || ''}</div>
-    `;
-
-    if (cliente.url) {
-      const wrapper = document.createElement('a');
-      wrapper.href = cliente.url;
-      wrapper.target = '_blank';
-      wrapper.rel = 'noopener';
-      wrapper.appendChild(card);
-      container.appendChild(wrapper);
-    } else {
-      container.appendChild(card);
-    }
-  });
+function setError(input, msgEl, hasError) {
+  if (!input || !msgEl) return;
+  if (hasError) {
+    input.classList.add("error");
+    msgEl.classList.remove("hidden");
+  } else {
+    input.classList.remove("error");
+    msgEl.classList.add("hidden");
+  }
 }
 
-async function loadTrabajos() {
-  const container = document.getElementById('works-list');
-  if (!container) return;
-
-  const data = await loadJSON('trabajos.json');
-  if (!Array.isArray(data)) return;
-
-  container.innerHTML = '';
-
-  data.forEach((trabajo) => {
-    const card = document.createElement('article');
-    card.className = 'card';
-
-    const img = trabajo.imagen
-      ? `<div class="card-image"><img src="${trabajo.imagen}" alt="${trabajo.titulo || ''}"></div>`
-      : '';
-
-    card.innerHTML = `
-      <h3 class="card-title">${trabajo.titulo || ''}</h3>
-      <p class="card-text">${trabajo.descripcion || ''}</p>
-      ${img}
-      <div class="card-meta">${trabajo.detalle || ''}</div>
-    `;
-
-    container.appendChild(card);
-  });
+function validarEmail(valor) {
+  if (!valor) return true;
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(valor);
 }
 
-async function loadContacto() {
-  const data = await loadJSON('contacto.json');
-  if (!data) return;
+function validarFormulario() {
+  let ok = true;
+  const nombre = nombreEl.value.trim();
+  const tel = telEl.value.trim();
+  const email = emailEl.value.trim();
+  const detalle = detalleEl.value.trim();
 
-  setText('contact-intro', data.intro || '');
-  setText('contact-phone', data.telefono_visible || data.telefono || '');
-  setText('contact-email', data.email || '');
-  setText('contact-address', data.direccion || '');
-  setText('contact-hours', data.horario || '');
+  setError(nombreEl, errorNombre, !nombre);
+  if (!nombre) ok = false;
 
-  // Teléfono / WhatsApp link
-  const phoneLink = document.getElementById('contact-phone');
-  if (phoneLink && data.telefono) {
-    phoneLink.href = `tel:${data.telefono}`;
+  setError(telEl, errorTel, tel.length < 6);
+  if (tel.length < 6) ok = false;
+
+  const emailValido = validarEmail(email);
+  setError(emailEl, errorEmail, !emailValido);
+  if (!emailValido) ok = false;
+
+  setError(detalleEl, errorDetalle, detalle.length < 10);
+  if (detalle.length < 10) ok = false;
+
+  return ok;
+}
+
+function setFormLoading(isLoading) {
+  if (!btnEnviar) return;
+  btnEnviar.disabled = isLoading;
+  if (btnTexto && btnSpinner) {
+    btnTexto.textContent = isLoading ? "Enviando..." : "Enviar consulta";
+    btnSpinner.classList.toggle("hidden", !isLoading);
   }
+}
 
-  const emailLink = document.getElementById('contact-email');
-  if (emailLink && data.email) {
-    emailLink.href = `mailto:${data.email}`;
-  }
+function mostrarStatus(tipo, mensaje) {
+  if (!formStatus) return;
+  formStatus.textContent = mensaje;
+  formStatus.className = "text-[11px] rounded-md px-3 py-2 mb-1";
 
-  // WhatsApp predefinido
-  const waBtn = document.getElementById('contact-whatsapp-btn');
-  if (waBtn && data.whatsapp) {
-    const encoded = encodeURIComponent(
-      data.whatsapp_mensaje ||
-      'Hola, quiero más información sobre soluciones eléctricas para mi proyecto.'
+  if (tipo === "error") {
+    formStatus.classList.add(
+      "bg-red-50",
+      "border",
+      "border-red-200",
+      "text-red-700"
     );
-    waBtn.href = `https://wa.me/${data.whatsapp}?text=${encoded}`;
+  } else {
+    formStatus.classList.add(
+      "bg-emerald-50",
+      "border",
+      "border-emerald-200",
+      "text-emerald-700"
+    );
   }
-
-  // Mapa
-  const mapLink = document.getElementById('contact-map-link');
-  if (mapLink && data.mapa_url) {
-    mapLink.href = data.mapa_url;
-  } else if (mapLink) {
-    mapLink.style.display = 'none';
-  }
+  formStatus.classList.remove("hidden");
 }
 
-function setFooterYear() {
-  const el = document.getElementById('footer-year');
-  if (el) {
-    el.textContent = new Date().getFullYear().toString();
-  }
+function abrirModalExito() {
+  const modal = document.getElementById("modal-exito");
+  if (modal) modal.classList.remove("hidden");
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setFooterYear();
+function cerrarModalExito() {
+  const modal = document.getElementById("modal-exito");
+  if (modal) modal.classList.add("hidden");
+}
+window.cerrarModalExito = cerrarModalExito;
 
-  // Cargar todas las secciones en paralelo
-  Promise.all([
-    loadBranding(),
-    loadHero(),
-    loadServicios(),
-    loadClientes(),
-    loadTrabajos(),
-    loadContacto()
-  ]).catch((err) => {
-    console.error('Error al cargar contenido dinámico', err);
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!validarFormulario()) {
+      mostrarStatus("error", "Revisá los campos marcados en rojo.");
+      return;
+    }
+
+    if (!API_URL || !API_URL.startsWith("http")) {
+      mostrarStatus("error", "La URL de la API no está configurada.");
+      return;
+    }
+
+    const payload = {
+      nombre: nombreEl.value.trim(),
+      telefono: telEl.value.trim(),
+      email: emailEl.value.trim(),
+      servicio: servicioEl.value.trim(),
+      urgencia: urgenciaEl.value.trim(),
+      detalle: detalleEl.value.trim(),
+      origen: "Web Grupo EMSEI",
+    };
+
+    try {
+      setFormLoading(true);
+      mostrarStatus("ok", "Enviando tu consulta, por favor esperá...");
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data || data.ok !== true) {
+        throw new Error("Respuesta no válida del servidor");
+      }
+
+      mostrarStatus("ok", "Tu consulta fue enviada correctamente.");
+      form.reset();
+      abrirModalExito();
+    } catch (err) {
+      console.error(err);
+      mostrarStatus(
+        "error",
+        "Hubo un problema al enviar la consulta. Probá de nuevo o escribinos por WhatsApp."
+      );
+    } finally {
+      setFormLoading(false);
+    }
+  });
+}
+
+// Scroll suave para enlaces de navegación
+document.querySelectorAll("a[href^='#']").forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+    if (!targetId || targetId === "#") return;
+    const el = document.querySelector(targetId);
+    if (!el) return;
+    e.preventDefault();
+    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: "smooth" });
   });
 });
