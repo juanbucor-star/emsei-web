@@ -1,13 +1,15 @@
-// ================================
+// ===============================
 // Grupo EMSEI – Frontend lógica
-// ================================
+// ===============================
 
-const API_URL = "https://contact.juanbucor.workers.dev/contact";
+// URL del Cloudflare Worker o API
+const API_URL = "https://contact.juanbucor.workers.dev/contact"; // MANTENER O CAMBIAR SEGÚN TU CONFIGURACIÓN
 
 // Scroll suave
 function scrollToId(id) {
   const el = document.getElementById(id);
   if (!el) return;
+  // Ajuste para el sticky header (80px)
   const top = el.getBoundingClientRect().top + window.scrollY - 80;
   window.scrollTo({ top, behavior: "smooth" });
 }
@@ -21,7 +23,8 @@ if (btnMenu && mobileMenu) {
     mobileMenu.classList.toggle("hidden");
   });
 
-  mobileMenu.querySelectorAll("a[href^='#']").forEach((link) => {
+  // Cierra el menú móvil al hacer clic en un enlace
+  mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.classList.add("hidden");
     });
@@ -32,131 +35,88 @@ if (btnMenu && mobileMenu) {
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Formulario
+// ===============================
+// Lógica del Formulario
+// ===============================
+
 const form = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
 const btnEnviar = document.getElementById("btn-enviar");
 const btnTexto = document.getElementById("btn-texto");
 const btnSpinner = document.getElementById("btn-spinner");
 
+// Campos del formulario
 const nombreEl = document.getElementById("nombre");
 const telEl = document.getElementById("telefono");
 const emailEl = document.getElementById("email");
+const tipoClienteEl = document.getElementById("tipoCliente"); // NUEVO
 const servicioEl = document.getElementById("servicio");
 const urgenciaEl = document.getElementById("urgencia");
 const detalleEl = document.getElementById("detalle");
+const honeypotEl = document.getElementById("honeypot"); // NUEVO
 
-const errorNombre = document.getElementById("error-nombre");
-const errorTel = document.getElementById("error-telefono");
-const errorEmail = document.getElementById("error-email");
-const errorDetalle = document.getElementById("error-detalle");
-
-function setError(input, msgEl, hasError) {
-  if (!input || !msgEl) return;
-  if (hasError) {
-    input.classList.add("error");
-    msgEl.classList.remove("hidden");
-  } else {
-    input.classList.remove("error");
-    msgEl.classList.add("hidden");
-  }
-}
-
-function validarEmail(valor) {
-  if (!valor) return true;
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(valor);
-}
-
-function validarFormulario() {
-  let ok = true;
-  const nombre = nombreEl.value.trim();
-  const tel = telEl.value.trim();
-  const email = emailEl.value.trim();
-  const detalle = detalleEl.value.trim();
-
-  setError(nombreEl, errorNombre, !nombre);
-  if (!nombre) ok = false;
-
-  setError(telEl, errorTel, tel.length < 6);
-  if (tel.length < 6) ok = false;
-
-  const emailValido = validarEmail(email);
-  setError(emailEl, errorEmail, !emailValido);
-  if (!emailValido) ok = false;
-
-  setError(detalleEl, errorDetalle, detalle.length < 10);
-  if (detalle.length < 10) ok = false;
-
-  return ok;
-}
-
-function setFormLoading(isLoading) {
-  if (!btnEnviar) return;
-  btnEnviar.disabled = isLoading;
-  if (btnTexto && btnSpinner) {
-    btnTexto.textContent = isLoading ? "Enviando..." : "Enviar consulta";
-    btnSpinner.classList.toggle("hidden", !isLoading);
-  }
-}
-
-function mostrarStatus(tipo, mensaje) {
-  if (!formStatus) return;
-  formStatus.textContent = mensaje;
-  formStatus.className = "text-[11px] rounded-md px-3 py-2 mb-1";
-
-  if (tipo === "error") {
-    formStatus.classList.add(
-      "bg-red-50",
-      "border",
-      "border-red-200",
-      "text-red-700"
-    );
-  } else {
-    formStatus.classList.add(
-      "bg-emerald-50",
-      "border",
-      "border-emerald-200",
-      "text-emerald-700"
-    );
-  }
-  formStatus.classList.remove("hidden");
-}
-
+// Modal
+const modalExito = document.getElementById("modal-exito");
 function abrirModalExito() {
-  const modal = document.getElementById("modal-exito");
-  if (modal) modal.classList.remove("hidden");
+  if (modalExito) modalExito.classList.remove("hidden");
 }
-
 function cerrarModalExito() {
-  const modal = document.getElementById("modal-exito");
-  if (modal) modal.classList.add("hidden");
+  if (modalExito) modalExito.classList.add("hidden");
 }
 window.cerrarModalExito = cerrarModalExito;
 
+// Muestra el estado del envío
+function mostrarStatus(tipo, mensaje) {
+  formStatus.textContent = mensaje;
+  formStatus.classList.remove("hidden", "text-red-500", "text-green-600");
+  if (tipo === "error") {
+    formStatus.classList.add("text-red-500");
+  } else {
+    formStatus.classList.add("text-green-600");
+  }
+}
+
+// Control de carga del botón
+function setFormLoading(isLoading) {
+  if (isLoading) {
+    btnEnviar.disabled = true;
+    btnTexto.textContent = "Enviando...";
+    btnSpinner.classList.remove("hidden");
+  } else {
+    btnEnviar.disabled = false;
+    btnTexto.textContent = "Enviar Consulta Técnica";
+    btnSpinner.classList.add("hidden");
+  }
+}
+
+// Handler de envío de formulario
 if (form) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if (!validarFormulario()) {
-      mostrarStatus("error", "Revisá los campos marcados en rojo.");
-      return;
-    }
-
-    if (!API_URL || !API_URL.startsWith("http")) {
-      mostrarStatus("error", "La URL de la API no está configurada.");
-      return;
-    }
+    // Resetear status
+    formStatus.classList.add("hidden");
 
     const payload = {
       nombre: nombreEl.value.trim(),
       telefono: telEl.value.trim(),
       email: emailEl.value.trim(),
+      tipoCliente: tipoClienteEl.value.trim(), // <-- AÑADIDO
       servicio: servicioEl.value.trim(),
       urgencia: urgenciaEl.value.trim(),
       detalle: detalleEl.value.trim(),
+      honeypot: honeypotEl.value.trim(), // <-- AÑADIDO (Spam trap)
       origen: "Web Grupo EMSEI",
     };
+
+    // 1. CHEQUEO HONEYPOT (Protección de frontend)
+    if (payload.honeypot) {
+      // Si el campo honeypot está lleno, es un bot. Simular éxito y salir.
+      mostrarStatus("ok", "Tu consulta fue enviada correctamente.");
+      form.reset();
+      abrirModalExito();
+      return; 
+    }
 
     try {
       setFormLoading(true);
@@ -188,16 +148,3 @@ if (form) {
     }
   });
 }
-
-// Scroll suave para enlaces de navegación
-document.querySelectorAll("a[href^='#']").forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    const targetId = this.getAttribute("href");
-    if (!targetId || targetId === "#") return;
-    const el = document.querySelector(targetId);
-    if (!el) return;
-    e.preventDefault();
-    const top = el.getBoundingClientRect().top + window.scrollY - 80;
-    window.scrollTo({ top, behavior: "smooth" });
-  });
-});
