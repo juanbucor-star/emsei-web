@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Grupo EMSEI: Servicios de instalaciones y certificación eléctrica para arquitectura, consorcios, inmobiliarias e inmuebles en Argentina. Rigor técnico y cumplimiento AEA."
+      content="Grupo EMSEI: Soluciones de instalaciones eléctricas de Media y Baja Tensión para Arquitectos, Consorcios, Inmobiliarias y Particulares. Rigor técnico AEA en Argentina."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,14 +18,14 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      // Configuración de colores modernos: Azul Índigo (formal) y Amarillo (eléctrico)
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              // Definición de colores modernos para formalidad
               primary: '#3730A3', // Indigo 700 - Formal
               secondary: '#FACC15', // Yellow 400 - Eléctrico/Urgencia
-              // Se mantienen los colores slate para fondo y texto
+              // Puedes usar slate-900 para el texto principal
             }
           }
         }
@@ -116,31 +116,38 @@
     </header>
 
     <main>
-      <section id="inicio" class="bg-white py-12 md:py-24 border-b border-slate-100">
-        <div class="max-w-5xl mx-auto px-4 text-center">
+      <section id="inicio" class="relative overflow-hidden">
+        <div
+            class="absolute inset-0 bg-cover bg-center"
+            style="background-image: url('./img/hero-banner-placeholder.jpg'); background-position: center 30%;"
+        >
+            <div class="absolute inset-0 bg-slate-900/60"></div>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto px-4 py-20 md:py-32 text-white text-center md:text-left">
           <h1
-            class="text-3xl md:text-5xl font-bold mb-4 leading-tight text-primary"
+            class="text-3xl md:text-5xl font-bold mb-4 leading-tight"
           >
             Ingeniería Eléctrica y Soluciones de Instalación Integral.
           </h1>
-          <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p class="text-lg md:text-xl text-slate-200 mb-8 max-w-3xl md:mx-0 mx-auto">
             Damos soporte integral a **Arquitectos, Consorcios, Inmobiliarias** y
             **Particulares** con rigor técnico, cumplimiento de **Normativa AEA**
             y entrega en plazos.
           </p>
 
-          <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
             <a
               onclick="scrollToId('contacto')"
-              class="rounded-lg bg-primary text-white px-8 py-3 text-base font-semibold hover:bg-indigo-800 transition duration-300 cursor-pointer shadow-lg shadow-indigo-200/50"
+              class="rounded-lg bg-primary text-white px-8 py-3 text-base font-semibold hover:bg-indigo-800 transition duration-300 cursor-pointer shadow-lg shadow-indigo-300/40"
             >
               Solicitar Asesoramiento Técnico
             </a>
             <a
-              onclick="scrollToId('servicios')"
-              class="rounded-lg border border-slate-300 bg-white text-slate-700 px-8 py-3 text-base font-semibold hover:bg-slate-100 transition duration-300 cursor-pointer"
+              href="tel:+543512035158"
+              class="rounded-lg border border-secondary bg-secondary text-slate-900 px-8 py-3 text-base font-semibold hover:bg-yellow-500 transition duration-300 cursor-pointer"
             >
-              Ver Nuestros Servicios
+              Llamar Ahora
             </a>
           </div>
         </div>
@@ -155,17 +162,17 @@
                 <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-md">
                     <svg class="w-8 h-8 text-primary mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 16l-3-3 6-6"></path></svg>
                     <h3 class="text-lg font-semibold mb-2 text-slate-900">Certificación AEA y Normativas</h3>
-                    <p class="text-sm text-slate-600">Trabajamos bajo estricto cumplimiento de la Asociación Electrotécnica Argentina. Sus instalaciones seguras y documentadas.</p>
+                    <p class="text-sm text-slate-600">Trabajamos bajo estricto cumplimiento de la Asociación Electrotécnica Argentina (AEA). Instalaciones seguras y documentadas.</p>
                 </div>
                 <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-md">
                     <svg class="w-8 h-8 text-primary mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                     <h3 class="text-lg font-semibold mb-2 text-slate-900">Planos As Built y Protocolos</h3>
-                    <p class="text-sm text-slate-600">Documentación completa al finalizar: Planos 'As Built', certificados y protocolos de prueba. Transparencia total para su estudio o consorcio.</p>
+                    <p class="text-sm text-slate-600">Entrega de Planos 'As Built', certificados de medición y protocolos de prueba. Transparencia total para su estudio o consorcio.</p>
                 </div>
                 <div class="p-6 bg-white rounded-xl border border-slate-200 shadow-md">
                     <svg class="w-8 h-8 text-primary mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 17h5l-1.44-1.44a1 1 0 0 0-.15-.09l-2.41-.95a1 1 0 0 0-.61.6l-.37 1.83a.99.99 0 0 0 .19 1.15l1.62 1.62c.28.28.67.42 1.06.42.39 0 .78-.14 1.06-.42l1.62-1.62a.99.99 0 0 0 .19-1.15l-.37-1.83a1 1 0 0 0-.61-.6l-2.41-.95a1 1 0 0 0-.15-.09L15 17zM18 10h-2M18 14h-2M10 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-1M15 7l-5-5-5 5"></path></svg>
-                    <h3 class="text-lg font-semibold mb-2 text-slate-900">Plazos y Mantenimiento</h3>
-                    <p class="text-sm text-slate-600">Adaptación flexible a cronogramas de obra. Servicio de mantenimiento preventivo y atención de urgencias 24/7 para clientes.</p>
+                    <h3 class="text-lg font-semibold mb-2 text-slate-900">Plazos y Atención 24/7</h3>
+                    <p class="text-sm text-slate-600">Adaptación flexible a cronogramas de obra. Servicio de mantenimiento preventivo y atención de urgencias para minimizar tiempos.</p>
                 </div>
             </div>
         </div>
@@ -184,7 +191,7 @@
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="servicio-card">
+            <div class="servicio-card hover:border-primary/50 transition">
               <div
                 class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4"
               >
@@ -211,7 +218,7 @@
               </p>
             </div>
 
-            <div class="servicio-card">
+            <div class="servicio-card hover:border-primary/50 transition">
               <div
                 class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4"
               >
@@ -238,7 +245,7 @@
               </p>
             </div>
 
-            <div class="servicio-card">
+            <div class="servicio-card hover:border-primary/50 transition">
               <div
                 class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4"
               >
@@ -340,8 +347,7 @@
                 </p>
               </div>
             </div>
-            
-            </div>
+          </div>
 
           <div class="text-center mt-12">
             <a
@@ -474,7 +480,7 @@
                   ></textarea>
                 </div>
 
-                <div class="hidden">
+                <div class="absolute -left-[9999px] top-0">
                     <label for="honeypot" class="label">Deje este campo vacío</label>
                     <input type="text" id="honeypot" name="honeypot" class="input" tabindex="-1" autocomplete="off" />
                 </div>
